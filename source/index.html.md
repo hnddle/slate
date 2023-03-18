@@ -61,7 +61,7 @@ mutation Login($email: String!, $password: String!) {
 
 ## Get All Kittens
 
-```jsx
+```graphql
 const kittn = require('kittn');
 
 let api = kittn.authorize('meowmeowmeow');
@@ -70,7 +70,7 @@ let kittens = api.kittens.get();
 
 > The above command returns JSON structured like this:
 
-```json
+```graphql
 [
   {
     "id": 1,
