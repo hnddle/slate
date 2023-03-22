@@ -26,14 +26,15 @@ meta:
 
 ## 인증 토큰
 
-Voiij에 회원가입이 완료된 회원은 로그인 후 header에 Authorization 토큰을 넣어 회원 전용 기능을 이용할 수 있습니다.
+Voiij 회원은 로그인 후 header에 Authorization 토큰을 넣어 회원 전용 기능을 이용할 수 있습니다.
 
 토큰 예시
 
 `Authorization: bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw`
 
 <aside class="notice">
-로그인 토큰은 API 전송시 header에 <code>Authorization</code> 값으로 전달해야 합니다. (토큰이 없어도 로그인이 불필요한 API는 사용 가능)
+로그인 토큰은 API 전송시 header에 <code>Authorization</code> 값으로 전달해야 합니다. 
+(다만 토큰이 없어도 로그인이 불필요한 API는 사용 가능)
 </aside>
 
 # 사용자 계정
@@ -42,7 +43,7 @@ Voiij에 회원가입이 완료된 회원은 로그인 후 header에 Authorizati
 
 > 회원가입 Mutation:
 
-```
+```graphql
 mutation Signup($user: UserInput!) {
   signup(user: $user)
 }
@@ -50,7 +51,7 @@ mutation Signup($user: UserInput!) {
 
 > 결과값 예시
 
-```
+```graphql
 {
 	"data": {
 		"signup": "success"
@@ -70,7 +71,7 @@ password | String | Y | 비밀번호 (최소 8자, 최대 20자, 영어/숫자/�
 
 > 로그인 Mutation:
 
-```
+```graphql
 mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     accessToken {
@@ -87,7 +88,7 @@ mutation Login($email: String!, $password: String!) {
 
 > 결과값 예시
 
-```
+```json
 {
 	"data": {
 		"login": {
@@ -141,15 +142,13 @@ mutation Signup($user: UserInput!) {
 
 > 결과값 예시
 
-```
+```json
 {
 	"data": {
 		"signup": "success"
 	}
 }
 ```
-
-
 
 ### HTTP Request
 
