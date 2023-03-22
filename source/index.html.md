@@ -2,13 +2,11 @@
 title: API Reference
 
 language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of-supported-languages-and-lexers
-  - jsx
   - graphql
-  - json
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/hnddle/slate'>Documentation Powered by Slate</a>
+  - 데모 Voiij API 문서입니다.
+  - <a href='https://voiij.kr'>Documentation of Voiij</a>
 
 includes:
   - errors
@@ -22,17 +20,16 @@ meta:
     content: Documentation for the Voiij API
 ---
 
-# Introduction
+# 개요
 
-Welcome to the Voiij API! You can use our API to access Voiij API endpoints.
+반갑습니다! Voiij API 입니다.
 
-반갑습니다!
+# 인증 토큰
 
-# Authentication
+Voiij에 회원가입이 완료된 회원은 header에 Authorization 토큰을 넣어 회원 전용 기능을 이용할 수 있습니다.
 
-> To login, use this code:
+로그인 Mutation:
 
-```graphql
 mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     accessToken {
@@ -45,11 +42,28 @@ mutation Login($email: String!, $password: String!) {
 		}
   }
 }
+
+
+> 결과값 예시
+
+```
+{
+	"data": {
+		"login": {
+			"accessToken": {
+				"tokenString": "bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw",
+				"tokenType": "Bearer "
+			},
+			"refreshToken": {
+				"tokenString": "bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw",
+				"tokenType": "Bearer "
+			}
+		}
+	}
+}
 ```
 
-> 로그인 토큰
-
-로그인 하려면
+토큰 예시
 
 `Authorization: bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw`
 
