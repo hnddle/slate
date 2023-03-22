@@ -345,8 +345,8 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li>데모 Voiij API 문서입니다.</li>
-            <li><a href='https://voiij.kr'>Documentation of Voiij</a></li>
+            <li>Voiij API 문서입니다.</li>
+            <li><a href='https://voiij.kr'>2023. Voiij Corp. All Rights Reserved.</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -364,9 +364,23 @@
 <aside class="notice">
 로그인 토큰은 API 전송시 header에 <code>Authorization</code> 값으로 전달해야 합니다. (토큰이 없어도 로그인이 불필요한 API는 사용 가능)
 </aside>
-<h1 id='de2aa79784'>사용자 계정</h1><h2 id='f772375124'>회원 가입</h2><h3 id='ed6e4e535b'>입력값</h3>
-<p>UserInput 객체</p>
-
+<h1 id='de2aa79784'>사용자 계정</h1><h2 id='f772375124'>회원 가입</h2>
+<blockquote>
+<p>회원가입 Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>mutation Signup($user: UserInput!) {
+  signup(user: $user)
+}
+</code></pre></div>
+<blockquote>
+<p>결과값 예시</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "data": {
+        "signup": "success"
+    }
+}
+</code></pre></div><h3 id='userinput'>UserInput 객체</h3>
 <table><thead>
 <tr>
 <th>변수명</th>
@@ -394,69 +408,7 @@
 <td>비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)</td>
 </tr>
 </tbody></table>
-
-<blockquote>
-<p>회원가입 Mutation:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>mutation Signup($user: UserInput!) {
-  signup(user: $user)
-}
-</code></pre></div>
-<blockquote>
-<p>결과값 예시</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>{
-    "data": {
-        "signup": "success"
-    }
-}
-</code></pre></div><h2 id='e225a6fd75'>로그인</h2><h3 id='ed6e4e535b-2'>입력값</h3>
-<table><thead>
-<tr>
-<th>변수명</th>
-<th>자료형</th>
-<th>필수 여부</th>
-<th>설명</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>String</td>
-<td>Y</td>
-<td>이메일</td>
-</tr>
-<tr>
-<td>password</td>
-<td>String</td>
-<td>Y</td>
-<td>비밀번호</td>
-</tr>
-</tbody></table>
-<h3 id='cbcf7f2002'>결과값</h3>
-<p>accessToken, refreshToken 객체</p>
-
-<table><thead>
-<tr>
-<th>변수명</th>
-<th>자료형</th>
-<th>필수 여부</th>
-<th>설명</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>tokenString</td>
-<td>String</td>
-<td>Y</td>
-<td>토큰 값</td>
-</tr>
-<tr>
-<td>tokenType</td>
-<td>String</td>
-<td>Y</td>
-<td>토큰 헤더 (Bearer)</td>
-</tr>
-</tbody></table>
-
+<h2 id='e225a6fd75'>로그인</h2>
 <blockquote>
 <p>로그인 Mutation:</p>
 </blockquote>
@@ -490,14 +442,84 @@
         }
     }
 }
-</code></pre></div><h2 id='e134f443a9'>내 정보 조회</h2>
+</code></pre></div>
+<p><strong>입력값</strong></p>
+
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Y</td>
+<td>이메일</td>
+</tr>
+<tr>
+<td>password</td>
+<td>String</td>
+<td>Y</td>
+<td>비밀번호</td>
+</tr>
+</tbody></table>
+
+<p>결과값 (accessToken, refreshToken)</p>
+
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tokenString</td>
+<td>String</td>
+<td>Y</td>
+<td>토큰 값</td>
+</tr>
+<tr>
+<td>tokenType</td>
+<td>String</td>
+<td>Y</td>
+<td>토큰 헤더 (Bearer)</td>
+</tr>
+</tbody></table>
+<h2 id='e134f443a9'>내 정보 조회</h2>
 <p>UserInput 객체</p>
 
-<p>변수명 | 자료형 | 필수 여부 | 설명
---------- | ------- | -----------
-email | String | Y | 이메일
-name | String | Y | 이름(닉네임)
-password | String | Y | 비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)</p>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Y</td>
+<td>이메일</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Y</td>
+<td>이름(닉네임)</td>
+</tr>
+<tr>
+<td>password</td>
+<td>String</td>
+<td>Y</td>
+<td>비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>회원가입 Mutation:</p>
