@@ -355,32 +355,33 @@
         <h1 id='476966c5a8'>개요</h1>
 <p>반갑습니다! Voiij API 입니다.</p>
 <h2 id='d1f31507fc'>인증 토큰</h2>
-<p>Voiij에 회원가입이 완료된 회원은 로그인 후 header에 Authorization 토큰을 넣어 회원 전용 기능을 이용할 수 있습니다.</p>
+<p>Voiij 회원은 로그인 후 header에 Authorization 토큰을 넣어 회원 전용 기능을 이용할 수 있습니다.</p>
 
 <p>토큰 예시</p>
 
 <p><code>Authorization: bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw</code></p>
 
 <aside class="notice">
-로그인 토큰은 API 전송시 header에 <code>Authorization</code> 값으로 전달해야 합니다. (토큰이 없어도 로그인이 불필요한 API는 사용 가능)
+로그인 토큰은 API 전송시 header에 <code>Authorization</code> 값으로 전달해야 합니다. 
+(다만 토큰이 없어도 로그인이 불필요한 API는 사용 가능)
 </aside>
 <h1 id='de2aa79784'>사용자 계정</h1><h2 id='f772375124'>회원 가입</h2>
 <blockquote>
 <p>회원가입 Mutation:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>mutation Signup($user: UserInput!) {
-  signup(user: $user)
-}
-</code></pre></div>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">Signup</span><span class="p">(</span><span class="nv">$user</span><span class="p">:</span><span class="w"> </span><span class="n">UserInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">signup</span><span class="p">(</span><span class="n">user</span><span class="p">:</span><span class="w"> </span><span class="nv">$user</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>결과값 예시</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>{
-    "data": {
-        "signup": "success"
-    }
-}
-</code></pre></div><h3 id='userinput'>UserInput 객체</h3>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">signup</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='userinput'>UserInput 객체</h3>
 <table><thead>
 <tr>
 <th>변수명</th>
@@ -412,37 +413,37 @@
 <blockquote>
 <p>로그인 Mutation:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>mutation Login($email: String!, $password: String!) {
-  login(email: $email, password: $password) {
-    accessToken {
-            tokenString
-            tokenType
-        }
-        refreshToken {
-            tokenString
-            tokenType
-        }
-  }
-}
-</code></pre></div>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">Login</span><span class="p">(</span><span class="nv">$email</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$password</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">login</span><span class="p">(</span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="nv">$email</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">:</span><span class="w"> </span><span class="nv">$password</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">accessToken</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">tokenString</span><span class="w">
+            </span><span class="n">tokenType</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="n">refreshToken</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">tokenString</span><span class="w">
+            </span><span class="n">tokenType</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <blockquote>
 <p>결과값 예시</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>{
-    "data": {
-        "login": {
-            "accessToken": {
-                "tokenString": "bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw",
-                "tokenType": "Bearer "
-            },
-            "refreshToken": {
-                "tokenString": "bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw",
-                "tokenType": "Bearer "
-            }
-        }
-    }
-}
-</code></pre></div>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"login"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"accessToken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"tokenString"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tokenType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer "</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"refreshToken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"tokenString"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tokenType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer "</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p><strong>입력값</strong></p>
 
 <table><thead>
@@ -531,12 +532,12 @@
 <blockquote>
 <p>결과값 예시</p>
 </blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>{
-    "data": {
-        "signup": "success"
-    }
-}
-</code></pre></div><h3 id='http-request'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"signup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
 <p><code>query getSimpleRecommendedProductsByCursor</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
