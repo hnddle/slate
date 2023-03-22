@@ -5,8 +5,8 @@ language_tabs: # must be one of https://github.com/rouge-ruby/rouge/wiki/List-of
   - graphql
 
 toc_footers:
-  - 데모 Voiij API 문서입니다.
-  - <a href='https://voiij.kr'>Documentation of Voiij</a>
+  - Voiij API 문서입니다.
+  - <a href='https://voiij.kr'>2023. Voiij Corp. All Rights Reserved.</a>
 
 includes:
   - errors
@@ -40,16 +40,6 @@ Voiij에 회원가입이 완료된 회원은 로그인 후 header에 Authorizati
 
 ## 회원 가입
 
-### 입력값
-
-UserInput 객체
-
-변수명 | 자료형 | 필수 여부 | 설명
---------- | ------- | ----------- | ----------
-email | String | Y | 이메일
-name | String | Y | 이름(닉네임)
-password | String | Y | 비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)
-
 > 회원가입 Mutation:
 
 ```
@@ -68,23 +58,15 @@ mutation Signup($user: UserInput!) {
 }
 ```
 
-## 로그인
-
-### 입력값
+### UserInput 객체
 
 변수명 | 자료형 | 필수 여부 | 설명
 --------- | ------- | ----------- | ----------
 email | String | Y | 이메일
-password | String | Y | 비밀번호
+name | String | Y | 이름(닉네임)
+password | String | Y | 비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)
 
-### 결과값
-
-accessToken, refreshToken 객체
-
-변수명 | 자료형 | 필수 여부 | 설명
---------- | ------- | ----------- | ----------
-tokenString | String | Y | 토큰 값
-tokenType | String | Y | 토큰 헤더 (Bearer)
+## 로그인
 
 > 로그인 Mutation:
 
@@ -122,12 +104,29 @@ mutation Login($email: String!, $password: String!) {
 }
 ```
 
+**입력값**
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+email | String | Y | 이메일
+password | String | Y | 비밀번호
+
+
+결과값 (accessToken, refreshToken)
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+tokenString | String | Y | 토큰 값
+tokenType | String | Y | 토큰 헤더 (Bearer)
+
+
+
 ## 내 정보 조회
 
 UserInput 객체
 
 변수명 | 자료형 | 필수 여부 | 설명
---------- | ------- | -----------
+--------- | ------- | ----------- | -----------
 email | String | Y | 이메일
 name | String | Y | 이름(닉네임)
 password | String | Y | 비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)
