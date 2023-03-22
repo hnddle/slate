@@ -314,21 +314,23 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#476966c5a8" class="toc-h1 toc-link" data-title="개요">개요</a>
-          </li>
-          <li>
-            <a href="#d1f31507fc" class="toc-h1 toc-link" data-title="인증 토큰">인증 토큰</a>
-          </li>
-          <li>
-            <a href="#f772375124" class="toc-h1 toc-link" data-title="회원 가입">회원 가입</a>
-          </li>
-          <li>
-            <a href="#e225a6fd75" class="toc-h1 toc-link" data-title="로그인">로그인</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
+                    <a href="#d1f31507fc" class="toc-h2 toc-link" data-title="인증 토큰">인증 토큰</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#de2aa79784" class="toc-h1 toc-link" data-title="사용자 계정">사용자 계정</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#f772375124" class="toc-h2 toc-link" data-title="회원 가입">회원 가입</a>
+                  </li>
+                  <li>
+                    <a href="#e225a6fd75" class="toc-h2 toc-link" data-title="로그인">로그인</a>
+                  </li>
+                  <li>
+                    <a href="#e134f443a9" class="toc-h2 toc-link" data-title="내 정보 조회">내 정보 조회</a>
                   </li>
                   <li>
                     <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
@@ -352,7 +354,7 @@
       <div class="content">
         <h1 id='476966c5a8'>개요</h1>
 <p>반갑습니다! Voiij API 입니다.</p>
-<h1 id='d1f31507fc'>인증 토큰</h1>
+<h2 id='d1f31507fc'>인증 토큰</h2>
 <p>Voiij에 회원가입이 완료된 회원은 로그인 후 header에 Authorization 토큰을 넣어 회원 전용 기능을 이용할 수 있습니다.</p>
 
 <p>토큰 예시</p>
@@ -362,14 +364,36 @@
 <aside class="notice">
 로그인 토큰은 API 전송시 header에 <code>Authorization</code> 값으로 전달해야 합니다. (토큰이 없어도 로그인이 불필요한 API는 사용 가능)
 </aside>
-<h1 id='f772375124'>회원 가입</h1>
+<h1 id='de2aa79784'>사용자 계정</h1><h2 id='f772375124'>회원 가입</h2><h3 id='ed6e4e535b'>입력값</h3>
 <p>UserInput 객체</p>
 
-<p>변수명 | 자료형 | 필수 여부 | 설명
---------- | ------- | -----------
-email | String | Y | 이메일
-name | String | Y | 이름(닉네임)
-password | String | Y | 비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)</p>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Y</td>
+<td>이메일</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Y</td>
+<td>이름(닉네임)</td>
+</tr>
+<tr>
+<td>password</td>
+<td>String</td>
+<td>Y</td>
+<td>비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>회원가입 Mutation:</p>
@@ -386,20 +410,52 @@ password | String | Y | 비밀번호 (최소 8자, 최대 20자, 영어/숫자/�
         "signup": "success"
     }
 }
-</code></pre></div><h1 id='e225a6fd75'>로그인</h1>
-<p>입력값</p>
-
-<p>변수명 | 자료형 | 필수 여부 | 설명
---------- | ------- | -----------
-email | String | Y | 이메일
-password | String | Y | 비밀번호</p>
-
+</code></pre></div><h2 id='e225a6fd75'>로그인</h2><h3 id='ed6e4e535b-2'>입력값</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>String</td>
+<td>Y</td>
+<td>이메일</td>
+</tr>
+<tr>
+<td>password</td>
+<td>String</td>
+<td>Y</td>
+<td>비밀번호</td>
+</tr>
+</tbody></table>
+<h3 id='cbcf7f2002'>결과값</h3>
 <p>accessToken, refreshToken 객체</p>
 
-<p>변수명 | 자료형 | 필수 여부 | 설명
---------- | ------- | -----------
-tokenString | String | Y | 토큰 값
-tokenType | String | Y | 토큰 헤더 (Bearer)</p>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tokenString</td>
+<td>String</td>
+<td>Y</td>
+<td>토큰 값</td>
+</tr>
+<tr>
+<td>tokenType</td>
+<td>String</td>
+<td>Y</td>
+<td>토큰 헤더 (Bearer)</td>
+</tr>
+</tbody></table>
 
 <blockquote>
 <p>로그인 Mutation:</p>
@@ -434,33 +490,31 @@ tokenType | String | Y | 토큰 헤더 (Bearer)</p>
         }
     }
 }
-</code></pre></div><h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="err">const</span><span class="w"> </span><span class="err">kittn</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">require('kittn');</span><span class="w">
+</code></pre></div><h2 id='e134f443a9'>내 정보 조회</h2>
+<p>UserInput 객체</p>
 
-</span><span class="err">let</span><span class="w"> </span><span class="err">api</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">kittn.authorize('meowmeowmeow');</span><span class="w">
-</span><span class="err">let</span><span class="w"> </span><span class="err">kittens</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">api.kittens.get();</span><span class="w">
-</span></code></pre></div>
+<p>변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | -----------
+email | String | Y | 이메일
+name | String | Y | 이름(닉네임)
+password | String | Y | 비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)</p>
+
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>회원가입 Mutation:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="err">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">1</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Fluffums</span><span class="err">"</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">breed</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">calico</span><span class="err">"</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">fluffiness</span><span class="err">":</span><span class="w"> </span><span class="err">6</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">cuteness</span><span class="err">":</span><span class="w"> </span><span class="err">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">name</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">Max</span><span class="err">"</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">breed</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">unknown</span><span class="err">"</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">fluffiness</span><span class="err">":</span><span class="w"> </span><span class="err">5</span><span class="p">,</span><span class="w">
-    </span><span class="err">"</span><span class="n">cuteness</span><span class="err">":</span><span class="w"> </span><span class="err">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="err">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<div class="highlight"><pre class="highlight plaintext"><code>mutation Signup($user: UserInput!) {
+  signup(user: $user)
+}
+</code></pre></div>
+<blockquote>
+<p>결과값 예시</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "data": {
+        "signup": "success"
+    }
+}
+</code></pre></div><h3 id='http-request'>HTTP Request</h3>
 <p><code>query getSimpleRecommendedProductsByCursor</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
