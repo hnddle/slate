@@ -24,7 +24,7 @@ meta:
 
 반갑습니다! Voiij API 입니다.
 
-# 인증 토큰
+## 인증 토큰
 
 Voiij에 회원가입이 완료된 회원은 로그인 후 header에 Authorization 토큰을 넣어 회원 전용 기능을 이용할 수 있습니다.
 
@@ -36,12 +36,16 @@ Voiij에 회원가입이 완료된 회원은 로그인 후 header에 Authorizati
 로그인 토큰은 API 전송시 header에 <code>Authorization</code> 값으로 전달해야 합니다. (토큰이 없어도 로그인이 불필요한 API는 사용 가능)
 </aside>
 
-# 회원 가입
+# 사용자 계정
+
+## 회원 가입
+
+### 입력값
 
 UserInput 객체
 
 변수명 | 자료형 | 필수 여부 | 설명
---------- | ------- | -----------
+--------- | ------- | ----------- | ----------
 email | String | Y | 이메일
 name | String | Y | 이름(닉네임)
 password | String | Y | 비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)
@@ -64,20 +68,21 @@ mutation Signup($user: UserInput!) {
 }
 ```
 
-# 로그인
+## 로그인
 
-입력값
+### 입력값
 
 변수명 | 자료형 | 필수 여부 | 설명
---------- | ------- | -----------
+--------- | ------- | ----------- | ----------
 email | String | Y | 이메일
 password | String | Y | 비밀번호
 
+### 결과값
 
 accessToken, refreshToken 객체
 
 변수명 | 자료형 | 필수 여부 | 설명
---------- | ------- | -----------
+--------- | ------- | ----------- | ----------
 tokenString | String | Y | 토큰 값
 tokenType | String | Y | 토큰 헤더 (Bearer)
 
@@ -117,39 +122,35 @@ mutation Login($email: String!, $password: String!) {
 }
 ```
 
-# Kittens
+## 내 정보 조회
 
-## Get All Kittens
+UserInput 객체
 
-```graphql
-const kittn = require('kittn');
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | -----------
+email | String | Y | 이메일
+name | String | Y | 이름(닉네임)
+password | String | Y | 비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+> 회원가입 Mutation:
+
+```
+mutation Signup($user: UserInput!) {
+  signup(user: $user)
+}
 ```
 
-> The above command returns JSON structured like this:
+> 결과값 예시
 
-```graphql
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+```
+{
+	"data": {
+		"signup": "success"
+	}
+}
 ```
 
-This endpoint retrieves all kittens.
+
 
 ### HTTP Request
 
