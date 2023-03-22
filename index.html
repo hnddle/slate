@@ -295,7 +295,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;jsx&quot;,&quot;graphql&quot;,&quot;json&quot;]">
+  <body class="index" data-languages="[&quot;graphql&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -305,9 +305,7 @@
     <div class="toc-wrapper">
       <img src="images/logo-1e815a84.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="jsx">jsx</a>
               <a href="#" data-language-name="graphql">graphql</a>
-              <a href="#" data-language-name="json">json</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -315,10 +313,10 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#476966c5a8" class="toc-h1 toc-link" data-title="개요">개요</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            <a href="#d1f31507fc" class="toc-h1 toc-link" data-title="인증 토큰">인증 토큰</a>
           </li>
           <li>
             <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
@@ -339,39 +337,52 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/hnddle/slate'>Documentation Powered by Slate</a></li>
+            <li>데모 Voiij API 문서입니다.</li>
+            <li><a href='https://voiij.kr'>Documentation of Voiij</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Voiij API! You can use our API to access Voiij API endpoints.</p>
+        <h1 id='476966c5a8'>개요</h1>
+<p>반갑습니다! Voiij API 입니다.</p>
+<h1 id='d1f31507fc'>인증 토큰</h1>
+<p>Voiij에 회원가입이 완료된 회원은 header에 Authorization 토큰을 넣어 회원 전용 기능을 이용할 수 있습니다.</p>
 
-<p>반갑습니다!</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To login, use this code:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">Login</span><span class="p">(</span><span class="nv">$email</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$password</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">login</span><span class="p">(</span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="nv">$email</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">:</span><span class="w"> </span><span class="nv">$password</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="n">accessToken</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="n">tokenString</span><span class="w">
-            </span><span class="n">tokenType</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-        </span><span class="n">refreshToken</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="n">tokenString</span><span class="w">
-            </span><span class="n">tokenType</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<blockquote>
-<p>로그인 토큰</p>
-</blockquote>
+<p>로그인 Mutation:</p>
 
-<p>로그인 하려면</p>
+<p>mutation Login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    accessToken {
+            tokenString
+            tokenType
+        }
+        refreshToken {
+            tokenString
+            tokenType
+        }
+  }
+}</p>
+
+<blockquote>
+<p>결과값 예시</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "data": {
+        "login": {
+            "accessToken": {
+                "tokenString": "bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw",
+                "tokenType": "Bearer "
+            },
+            "refreshToken": {
+                "tokenString": "bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw",
+                "tokenType": "Bearer "
+            }
+        }
+    }
+}
+</code></pre></div>
+<p>토큰 예시</p>
 
 <p><code>Authorization: bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw</code></p>
 
@@ -563,9 +574,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="jsx">jsx</a>
                 <a href="#" data-language-name="graphql">graphql</a>
-                <a href="#" data-language-name="json">json</a>
           </div>
       </div>
     </div>
