@@ -319,6 +319,12 @@
             <a href="#d1f31507fc" class="toc-h1 toc-link" data-title="인증 토큰">인증 토큰</a>
           </li>
           <li>
+            <a href="#f772375124" class="toc-h1 toc-link" data-title="회원 가입">회원 가입</a>
+          </li>
+          <li>
+            <a href="#e225a6fd75" class="toc-h1 toc-link" data-title="로그인">로그인</a>
+          </li>
+          <li>
             <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
               <ul class="toc-list-h2">
                   <li>
@@ -347,11 +353,58 @@
         <h1 id='476966c5a8'>개요</h1>
 <p>반갑습니다! Voiij API 입니다.</p>
 <h1 id='d1f31507fc'>인증 토큰</h1>
-<p>Voiij에 회원가입이 완료된 회원은 header에 Authorization 토큰을 넣어 회원 전용 기능을 이용할 수 있습니다.</p>
+<p>Voiij에 회원가입이 완료된 회원은 로그인 후 header에 Authorization 토큰을 넣어 회원 전용 기능을 이용할 수 있습니다.</p>
 
+<p>토큰 예시</p>
+
+<p><code>Authorization: bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw</code></p>
+
+<aside class="notice">
+로그인 토큰은 API 전송시 header에 <code>Authorization</code> 값으로 전달해야 합니다. (토큰이 없어도 로그인이 불필요한 API는 사용 가능)
+</aside>
+<h1 id='f772375124'>회원 가입</h1>
+<p>UserInput 객체</p>
+
+<p>변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | -----------
+email | String | Y | 이메일
+name | String | Y | 이름(닉네임)
+password | String | Y | 비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)</p>
+
+<blockquote>
+<p>회원가입 Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>mutation Signup($user: UserInput!) {
+  signup(user: $user)
+}
+</code></pre></div>
+<blockquote>
+<p>결과값 예시</p>
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>{
+    "data": {
+        "signup": "success"
+    }
+}
+</code></pre></div><h1 id='e225a6fd75'>로그인</h1>
+<p>입력값</p>
+
+<p>변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | -----------
+email | String | Y | 이메일
+password | String | Y | 비밀번호</p>
+
+<p>accessToken, refreshToken 객체</p>
+
+<p>변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | -----------
+tokenString | String | Y | 토큰 값
+tokenType | String | Y | 토큰 헤더 (Bearer)</p>
+
+<blockquote>
 <p>로그인 Mutation:</p>
-
-<p>mutation Login($email: String!, $password: String!) {
+</blockquote>
+<div class="highlight"><pre class="highlight plaintext"><code>mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     accessToken {
             tokenString
@@ -362,8 +415,8 @@
             tokenType
         }
   }
-}</p>
-
+}
+</code></pre></div>
 <blockquote>
 <p>결과값 예시</p>
 </blockquote>
@@ -381,15 +434,7 @@
         }
     }
 }
-</code></pre></div>
-<p>토큰 예시</p>
-
-<p><code>Authorization: bearer exampleiOiJIUzUxMiJ9.eyJzmWIiOiIwOTMxZWNjNy00ZDhkLTRhNjktYjU0MS02ZGJiZTJmMjM0M2UiLCJpYXQiOjE2NzY0NTk5NjEsImV4cCI6MTY3NzA2NDc2MX0.G7yAq6excQ_Kn2i0Rr8mnfHIqscG4uyCEOnf2z91GLYWZ6DIhLt6QBYznceL8iK8TYMyZ-eQRA_6_YQKhMaMLw</code></p>
-
-<aside class="notice">
-로그인 토큰은 API 전송시 header에 <code>Authorization</code> 값으로 전달해야 합니다. (토큰 없이도 로그인 불필요한 API는 사용 가능)
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="err">const</span><span class="w"> </span><span class="err">kittn</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">require('kittn');</span><span class="w">
+</code></pre></div><h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="err">const</span><span class="w"> </span><span class="err">kittn</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">require('kittn');</span><span class="w">
 
 </span><span class="err">let</span><span class="w"> </span><span class="err">api</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">kittn.authorize('meowmeowmeow');</span><span class="w">
 </span><span class="err">let</span><span class="w"> </span><span class="err">kittens</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">api.kittens.get();</span><span class="w">
