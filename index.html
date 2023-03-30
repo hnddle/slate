@@ -721,13 +721,13 @@
 </tbody></table>
 <h2 id='checkemailduplicate'>이메일 중복 체크 (CheckEmailDuplicate)</h2>
 <blockquote>
-<p>Query:
-<code>graphql
-query CheckEmailDuplicate($email: String!) {
-  checkEmailDuplicate(email: $email)
-}
-</code></p>
-
+<p>Query:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">CheckEmailDuplicate</span><span class="p">(</span><span class="nv">$email</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">checkEmailDuplicate</span><span class="p">(</span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="nv">$email</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -737,13 +737,13 @@ query CheckEmailDuplicate($email: String!) {
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='checknameduplicate'>닉네임 중복 체크 (CheckNameDuplicate)</h2>
 <blockquote>
-<p>Query:
-<code>graphql
-query CheckNameDuplicate($name: String!) {
-  checkNameDuplicate(name: $name)
-}
-</code></p>
-
+<p>Query:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">CheckNameDuplicate</span><span class="p">(</span><span class="nv">$name</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">checkNameDuplicate</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nv">$name</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -753,13 +753,13 @@ query CheckNameDuplicate($name: String!) {
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='checklogintokenvalid'>로그인 토큰 유효성 체크 (CheckLoginTokenValid)</h2>
 <blockquote>
-<p>Query:
-<code>graphql
-query CheckLoginTokenValid {
-    checkLoginTokenValid
-}
-</code></p>
-
+<p>Query:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">CheckLoginTokenValid</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">checkLoginTokenValid</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -769,22 +769,22 @@ query CheckLoginTokenValid {
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='refresh-loginwithrefreshtoken'>Refresh 토큰 로그인, 로그인 토큰 연장 (LoginWithRefreshToken)</h2>
 <blockquote>
-<p>Mutation:
-<code>graphql
-mutation LoginWithRefreshToken($refreshToken: JWTTokenInput!) {
-    loginWithRefreshToken(refreshToken : $refreshToken) {
-        accessToken {
-            tokenString
-            tokenType
-        }
-        refreshToken {
-            tokenString
-            tokenType
-        }
-    }
-}
-</code></p>
-
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">LoginWithRefreshToken</span><span class="p">(</span><span class="nv">$refreshToken</span><span class="p">:</span><span class="w"> </span><span class="n">JWTTokenInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">loginWithRefreshToken</span><span class="p">(</span><span class="n">refreshToken</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="nv">$refreshToken</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">accessToken</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">tokenString</span><span class="w">
+            </span><span class="n">tokenType</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="n">refreshToken</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">tokenString</span><span class="w">
+            </span><span class="n">tokenType</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -803,13 +803,13 @@ mutation LoginWithRefreshToken($refreshToken: JWTTokenInput!) {
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='updatepassword'>비밀번호 변경 (UpdatePassword)</h2>
 <blockquote>
-<p>Mutation:
-<code>graphql
-mutation UpdatePassword($password: String!, $newPassword: String!) {
-  updatePassword(password: $password, newPassword: $newPassword)
-}
-</code></p>
-
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">UpdatePassword</span><span class="p">(</span><span class="nv">$password</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$newPassword</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updatePassword</span><span class="p">(</span><span class="n">password</span><span class="p">:</span><span class="w"> </span><span class="nv">$password</span><span class="p">,</span><span class="w"> </span><span class="n">newPassword</span><span class="p">:</span><span class="w"> </span><span class="nv">$newPassword</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -819,13 +819,13 @@ mutation UpdatePassword($password: String!, $newPassword: String!) {
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='checklogintokenvalid-2'>닉네임 변경 (CheckLoginTokenValid)</h2>
 <blockquote>
-<p>Mutation:
-<code>graphql
-mutation UpdateName($name: String!) {
-  updateName(name: $name)
-}
-</code></p>
-
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">UpdateName</span><span class="p">(</span><span class="nv">$name</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateName</span><span class="p">(</span><span class="n">name</span><span class="p">:</span><span class="w"> </span><span class="nv">$name</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -835,13 +835,13 @@ mutation UpdateName($name: String!) {
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='verifyemail'>이메일 인증 (VerifyEmail)</h2>
 <blockquote>
-<p>Mutation:
-<code>graphql
-mutation VerifyEmail($userId: String!, $authCode: String!) {
-  verifyEmail(userId: $userId, authCode: $authCode)
-}
-</code></p>
-
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">VerifyEmail</span><span class="p">(</span><span class="nv">$userId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$authCode</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">verifyEmail</span><span class="p">(</span><span class="n">userId</span><span class="p">:</span><span class="w"> </span><span class="nv">$userId</span><span class="p">,</span><span class="w"> </span><span class="n">authCode</span><span class="p">:</span><span class="w"> </span><span class="nv">$authCode</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -853,13 +853,13 @@ mutation VerifyEmail($userId: String!, $authCode: String!) {
 <p>로직 수정 필요! (현재 에러 발생)</p>
 
 <blockquote>
-<p>Mutation:
-<code>graphql
-mutation DeleteUserAccount {
-  deleteUserAccount 
-}
-</code></p>
-
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">DeleteUserAccount</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deleteUserAccount</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -871,13 +871,13 @@ mutation DeleteUserAccount {
 <p>별도 통합/단위 테스트 필요!</p>
 
 <blockquote>
-<p>Mutation:
-<code>graphql
-mutation ChangeUserProfileImage($userProfileImage: Upload!) {
-  changeUserProfileImage(userProfileImage: $userProfileImage)
-}
-</code></p>
-
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">ChangeUserProfileImage</span><span class="p">(</span><span class="nv">$userProfileImage</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">changeUserProfileImage</span><span class="p">(</span><span class="n">userProfileImage</span><span class="p">:</span><span class="w"> </span><span class="nv">$userProfileImage</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
 <p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
