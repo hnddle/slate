@@ -323,7 +323,7 @@
               </ul>
           </li>
           <li>
-            <a href="#user" class="toc-h1 toc-link" data-title="User">User</a>
+            <a href="#user" class="toc-h1 toc-link" data-title="사용자 (User)">사용자 (User)</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#signup" class="toc-h2 toc-link" data-title="회원가입 (Signup)">회원가입 (Signup)</a>
@@ -342,6 +342,61 @@
                   </li>
                   <li>
                     <a href="#checklogintokenvalid" class="toc-h2 toc-link" data-title="로그인 토큰 유효성 체크 (CheckLoginTokenValid)">로그인 토큰 유효성 체크 (CheckLoginTokenValid)</a>
+                  </li>
+                  <li>
+                    <a href="#refresh-loginwithrefreshtoken" class="toc-h2 toc-link" data-title="Refresh 토큰 로그인, 로그인 토큰 연장 (LoginWithRefreshToken)">Refresh 토큰 로그인, 로그인 토큰 연장 (LoginWithRefreshToken)</a>
+                  </li>
+                  <li>
+                    <a href="#updatepassword" class="toc-h2 toc-link" data-title="비밀번호 변경 (UpdatePassword)">비밀번호 변경 (UpdatePassword)</a>
+                  </li>
+                  <li>
+                    <a href="#checklogintokenvalid-2" class="toc-h2 toc-link" data-title="닉네임 변경 (CheckLoginTokenValid)">닉네임 변경 (CheckLoginTokenValid)</a>
+                  </li>
+                  <li>
+                    <a href="#verifyemail" class="toc-h2 toc-link" data-title="이메일 인증 (VerifyEmail)">이메일 인증 (VerifyEmail)</a>
+                  </li>
+                  <li>
+                    <a href="#deleteuseraccount" class="toc-h2 toc-link" data-title="회원 탈퇴 (DeleteUserAccount)">회원 탈퇴 (DeleteUserAccount)</a>
+                  </li>
+                  <li>
+                    <a href="#changeuserprofileimage" class="toc-h2 toc-link" data-title="사용자 프로필 사진 변경 (ChangeUserProfileImage)">사용자 프로필 사진 변경 (ChangeUserProfileImage)</a>
+                  </li>
+                  <li>
+                    <a href="#adduseraddress" class="toc-h2 toc-link" data-title="사용자 주소 추가 (AddUserAddress)">사용자 주소 추가 (AddUserAddress)</a>
+                  </li>
+                  <li>
+                    <a href="#edituseraddress" class="toc-h2 toc-link" data-title="사용자 주소 수정 (EditUserAddress)">사용자 주소 수정 (EditUserAddress)</a>
+                  </li>
+                  <li>
+                    <a href="#deleteuseraddress" class="toc-h2 toc-link" data-title="사용자 주소 삭제 (DeleteUserAddress)">사용자 주소 삭제 (DeleteUserAddress)</a>
+                  </li>
+                  <li>
+                    <a href="#setdefaultuseraddress" class="toc-h2 toc-link" data-title="사용자 기본 주소 설정 (SetDefaultUserAddress)">사용자 기본 주소 설정 (SetDefaultUserAddress)</a>
+                  </li>
+                  <li>
+                    <a href="#sendpasswordresetmail" class="toc-h2 toc-link" data-title="비밀번호 초기화 메일 전송 (SendPasswordResetMail)">비밀번호 초기화 메일 전송 (SendPasswordResetMail)</a>
+                  </li>
+                  <li>
+                    <a href="#resetpassword" class="toc-h2 toc-link" data-title="비밀번호 초기화 (ResetPassword)">비밀번호 초기화 (ResetPassword)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#seller" class="toc-h1 toc-link" data-title="판매자 (Seller)">판매자 (Seller)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#registerseller" class="toc-h2 toc-link" data-title="판매자 등록 (RegisterSeller)">판매자 등록 (RegisterSeller)</a>
+                  </li>
+                  <li>
+                    <a href="#deleteseller" class="toc-h2 toc-link" data-title="판매자 등록 (DeleteSeller)">판매자 등록 (DeleteSeller)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#cart" class="toc-h1 toc-link" data-title="장바구니 (Cart)">장바구니 (Cart)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#resetpassword-2" class="toc-h2 toc-link" data-title="비밀번호 초기화 (ResetPassword)">비밀번호 초기화 (ResetPassword)</a>
                   </li>
               </ul>
           </li>
@@ -370,7 +425,7 @@
 로그인 토큰은 API 전송시 header에 <code>Authorization</code> 값으로 전달해야 합니다. 
 (다만 토큰이 없어도 로그인이 불필요한 API는 사용 가능)
 </aside>
-<h1 id='user'>User</h1><h2 id='signup'>회원가입 (Signup)</h2>
+<h1 id='user'>사용자 (User)</h1><h2 id='signup'>회원가입 (Signup)</h2>
 <blockquote>
 <p>Mutation:</p>
 </blockquote>
@@ -710,6 +765,434 @@ query CheckLoginTokenValid {
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"checkLoginTokenValid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='refresh-loginwithrefreshtoken'>Refresh 토큰 로그인, 로그인 토큰 연장 (LoginWithRefreshToken)</h2>
+<blockquote>
+<p>Mutation:
+<code>graphql
+mutation LoginWithRefreshToken($refreshToken: JWTTokenInput!) {
+    loginWithRefreshToken(refreshToken : $refreshToken) {
+        accessToken {
+            tokenString
+            tokenType
+        }
+        refreshToken {
+            tokenString
+            tokenType
+        }
+    }
+}
+</code></p>
+
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"loginWithRefreshToken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"accessToken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"tokenString"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyYTgwYjdiNC0wMjQ1LTQwZGUtOTRiOS0xODE5OTc0NzBjNDkiLCJpYXQiOjE2ODAxNjcyNDMsImV4cCI6MTY4MDc3MjA0M30.OmWGEDloujwusHHKp32Qvk90os9yEvRsM5kXaXG0CsUEPveLrFud9hMDF-AEy6lyKm2Nj4INhys6DCxSTH6dYw"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tokenType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer "</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"refreshToken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"tokenString"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyYTgwYjdiNC0wMjQ1LTQwZGUtOTRiOS0xODE5OTc0NzBjNDkiLCJpYXQiOjE2ODAxNjcyNDMsImV4cCI6MTY4Mjc1OTI0M30.c9C3CtWd2HAI2VwrJR8QAcq3RzW0OiMOIqlhYpGiqsou4CXsm1DCi7qAN1dBMGLJ9m5oze-kMy7Upr7BptoNkg"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tokenType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer "</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='updatepassword'>비밀번호 변경 (UpdatePassword)</h2>
+<blockquote>
+<p>Mutation:
+<code>graphql
+mutation UpdatePassword($password: String!, $newPassword: String!) {
+  updatePassword(password: $password, newPassword: $newPassword)
+}
+</code></p>
+
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"updatePassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='checklogintokenvalid-2'>닉네임 변경 (CheckLoginTokenValid)</h2>
+<blockquote>
+<p>Mutation:
+<code>graphql
+mutation UpdateName($name: String!) {
+  updateName(name: $name)
+}
+</code></p>
+
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"updateName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='verifyemail'>이메일 인증 (VerifyEmail)</h2>
+<blockquote>
+<p>Mutation:
+<code>graphql
+mutation VerifyEmail($userId: String!, $authCode: String!) {
+  verifyEmail(userId: $userId, authCode: $authCode)
+}
+</code></p>
+
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"verifyEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='deleteuseraccount'>회원 탈퇴 (DeleteUserAccount)</h2>
+<p>로직 수정 필요! (현재 에러 발생)</p>
+
+<blockquote>
+<p>Mutation:
+<code>graphql
+mutation DeleteUserAccount {
+  deleteUserAccount 
+}
+</code></p>
+
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"deleteUserAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='changeuserprofileimage'>사용자 프로필 사진 변경 (ChangeUserProfileImage)</h2>
+<p>별도 통합/단위 테스트 필요!</p>
+
+<blockquote>
+<p>Mutation:
+<code>graphql
+mutation ChangeUserProfileImage($userProfileImage: Upload!) {
+  changeUserProfileImage(userProfileImage: $userProfileImage)
+}
+</code></p>
+
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"changeUserProfileImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='adduseraddress'>사용자 주소 추가 (AddUserAddress)</h2>
+<p>현재 일부 데이터 저장 안되는 버그 있음!</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">AddUserAddress</span><span class="p">(</span><span class="nv">$isDefault</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">!,</span><span class="w"> </span><span class="nv">$address</span><span class="p">:</span><span class="w"> </span><span class="n">AddressInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">addUserAddress</span><span class="p">(</span><span class="n">isDefault</span><span class="p">:</span><span class="w"> </span><span class="nv">$isDefault</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p">:</span><span class="w"> </span><span class="nv">$address</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">addUserAddress</span><span class="err">":</span><span class="w"> </span><span class="err">"2</span><span class="n">a80b7b4</span><span class="err">-0245-40</span><span class="n">de</span><span class="err">-94</span><span class="n">b9</span><span class="err">-181997470</span><span class="n">c49</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='addressinput'>AddressInput</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>recipientName</td>
+<td>Boolean</td>
+<td>Y</td>
+<td>수령인 이름</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>String</td>
+<td>Y</td>
+<td>국가 코드</td>
+</tr>
+<tr>
+<td>address1</td>
+<td>String</td>
+<td>Y</td>
+<td>주소1</td>
+</tr>
+<tr>
+<td>address2</td>
+<td>String</td>
+<td>Y</td>
+<td>주소2</td>
+</tr>
+<tr>
+<td>postalCode</td>
+<td>String</td>
+<td>N</td>
+<td>한국 (postalCode)</td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td>N</td>
+<td>미국, 영국 (city)</td>
+</tr>
+<tr>
+<td>county</td>
+<td>String</td>
+<td>N</td>
+<td>영국 (county)</td>
+</tr>
+<tr>
+<td>postCode</td>
+<td>String</td>
+<td>N</td>
+<td>영국 (postCode)</td>
+</tr>
+<tr>
+<td>state</td>
+<td>String</td>
+<td>N</td>
+<td>미국 (state)</td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>String</td>
+<td>N</td>
+<td>미국 (zipCode)</td>
+</tr>
+</tbody></table>
+<h2 id='edituseraddress'>사용자 주소 수정 (EditUserAddress)</h2>
+<p>현재 일부 데이터 저장 안되는 버그 있음!</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">EditUserAddress</span><span class="p">(</span><span class="nv">$addressId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$isDefault</span><span class="p">:</span><span class="w"> </span><span class="nb">Boolean</span><span class="p">!,</span><span class="w"> </span><span class="nv">$address</span><span class="p">:</span><span class="w"> </span><span class="n">AddressInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">editUserAddress</span><span class="p">(</span><span class="w">
+    </span><span class="n">addressId</span><span class="p">:</span><span class="w"> </span><span class="nv">$addressId</span><span class="w">
+    </span><span class="n">isDefault</span><span class="p">:</span><span class="w"> </span><span class="nv">$isDefault</span><span class="w">
+    </span><span class="n">address</span><span class="p">:</span><span class="w"> </span><span class="nv">$address</span><span class="w">
+  </span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">editUserAddress</span><span class="err">":</span><span class="w"> </span><span class="err">"2</span><span class="n">a80b7b4</span><span class="err">-0245-40</span><span class="n">de</span><span class="err">-94</span><span class="n">b9</span><span class="err">-181997470</span><span class="n">c49</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='addressinput-2'>AddressInput</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>recipientName</td>
+<td>Boolean</td>
+<td>Y</td>
+<td>수령인 이름</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>String</td>
+<td>Y</td>
+<td>국가 코드</td>
+</tr>
+<tr>
+<td>address1</td>
+<td>String</td>
+<td>Y</td>
+<td>주소1</td>
+</tr>
+<tr>
+<td>address2</td>
+<td>String</td>
+<td>Y</td>
+<td>주소2</td>
+</tr>
+<tr>
+<td>postalCode</td>
+<td>String</td>
+<td>N</td>
+<td>한국 (postalCode)</td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td>N</td>
+<td>미국, 영국 (city)</td>
+</tr>
+<tr>
+<td>county</td>
+<td>String</td>
+<td>N</td>
+<td>영국 (county)</td>
+</tr>
+<tr>
+<td>postCode</td>
+<td>String</td>
+<td>N</td>
+<td>영국 (postCode)</td>
+</tr>
+<tr>
+<td>state</td>
+<td>String</td>
+<td>N</td>
+<td>미국 (state)</td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>String</td>
+<td>N</td>
+<td>미국 (zipCode)</td>
+</tr>
+</tbody></table>
+<h2 id='deleteuseraddress'>사용자 주소 삭제 (DeleteUserAddress)</h2>
+<p>현재 일부 데이터 저장 안되는 버그 있음!</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">DeleteUserAddress</span><span class="p">(</span><span class="nv">$addressId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deleteUserAddress</span><span class="p">(</span><span class="n">addressId</span><span class="p">:</span><span class="w"> </span><span class="nv">$addressId</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">deleteUserAddress</span><span class="err">":</span><span class="w"> </span><span class="err">"2</span><span class="n">a80b7b4</span><span class="err">-0245-40</span><span class="n">de</span><span class="err">-94</span><span class="n">b9</span><span class="err">-181997470</span><span class="n">c49</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='setdefaultuseraddress'>사용자 기본 주소 설정 (SetDefaultUserAddress)</h2>
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">SetDefaultUserAddress</span><span class="p">(</span><span class="nv">$addressId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">setDefaultUserAddress</span><span class="p">(</span><span class="n">addressId</span><span class="p">:</span><span class="w"> </span><span class="nv">$addressId</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">setDefaultUserAddress</span><span class="err">":</span><span class="w"> </span><span class="err">"2</span><span class="n">a80b7b4</span><span class="err">-0245-40</span><span class="n">de</span><span class="err">-94</span><span class="n">b9</span><span class="err">-181997470</span><span class="n">c49</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='sendpasswordresetmail'>비밀번호 초기화 메일 전송 (SendPasswordResetMail)</h2>
+<p>테스트 필요!</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">SendPasswordResetMail</span><span class="p">(</span><span class="nv">$email</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">sendPasswordResetMail</span><span class="p">(</span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="nv">$email</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">sendPasswordResetMail</span><span class="err">":</span><span class="w"> </span><span class="err">"비밀번호</span><span class="w"> </span><span class="err">찾기</span><span class="w"> </span><span class="err">메일이</span><span class="w"> </span><span class="err">성공적으로</span><span class="w"> </span><span class="err">전송되었습니다."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='resetpassword'>비밀번호 초기화 (ResetPassword)</h2>
+<p>테스트 필요!</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">ResetPassword</span><span class="p">(</span><span class="nv">$email</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$passwordResetCode</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
+    </span><span class="nv">$newPassword</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+
+    </span><span class="n">resetPassword</span><span class="p">(</span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="nv">$email</span><span class="p">,</span><span class="w"> 
+        </span><span class="n">passwordResetCode</span><span class="p">:</span><span class="w"> </span><span class="nv">$passwordResetCode</span><span class="p">,</span><span class="w"> 
+        </span><span class="n">newPassword</span><span class="p">:</span><span class="w"> </span><span class="nv">$newPassword</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">resetPassword</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='seller'>판매자 (Seller)</h1><h2 id='registerseller'>판매자 등록 (RegisterSeller)</h2>
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">RegisterSeller</span><span class="p">(</span><span class="nv">$sellerName</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">registerSeller</span><span class="p">(</span><span class="n">sellerName</span><span class="p">:</span><span class="w"> </span><span class="nv">$sellerName</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">registerSeller</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='deleteseller'>판매자 등록 (DeleteSeller)</h2>
+<p>현재 에러! 기능 수정 필요 (체크해야할 데이터가 많기 때문)</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">DeleteSeller</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deleteSeller</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">deleteSeller</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='cart'>장바구니 (Cart)</h1><h2 id='resetpassword-2'>비밀번호 초기화 (ResetPassword)</h2>
+<p>테스트 필요!</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">ResetPassword</span><span class="p">(</span><span class="nv">$email</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$passwordResetCode</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
+    </span><span class="nv">$newPassword</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+
+    </span><span class="n">resetPassword</span><span class="p">(</span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="nv">$email</span><span class="p">,</span><span class="w"> 
+        </span><span class="n">passwordResetCode</span><span class="p">:</span><span class="w"> </span><span class="nv">$passwordResetCode</span><span class="p">,</span><span class="w"> 
+        </span><span class="n">newPassword</span><span class="p">:</span><span class="w"> </span><span class="nv">$newPassword</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">resetPassword</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='errors'>Errors</h1>
