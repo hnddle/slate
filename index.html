@@ -323,22 +323,25 @@
               </ul>
           </li>
           <li>
-            <a href="#de2aa79784" class="toc-h1 toc-link" data-title="사용자 계정">사용자 계정</a>
+            <a href="#user" class="toc-h1 toc-link" data-title="User">User</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#f772375124" class="toc-h2 toc-link" data-title="회원 가입">회원 가입</a>
+                    <a href="#signup" class="toc-h2 toc-link" data-title="회원가입 (Signup)">회원가입 (Signup)</a>
                   </li>
                   <li>
-                    <a href="#e225a6fd75" class="toc-h2 toc-link" data-title="로그인">로그인</a>
+                    <a href="#login" class="toc-h2 toc-link" data-title="로그인 (Login)">로그인 (Login)</a>
                   </li>
                   <li>
-                    <a href="#e134f443a9" class="toc-h2 toc-link" data-title="내 정보 조회">내 정보 조회</a>
+                    <a href="#getmyinfo" class="toc-h2 toc-link" data-title="내 정보 조회 (GetMyInfo)">내 정보 조회 (GetMyInfo)</a>
                   </li>
                   <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
+                    <a href="#checkemailduplicate" class="toc-h2 toc-link" data-title="이메일 중복 체크 (CheckEmailDuplicate)">이메일 중복 체크 (CheckEmailDuplicate)</a>
                   </li>
                   <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#checknameduplicate" class="toc-h2 toc-link" data-title="닉네임 중복 체크 (CheckNameDuplicate)">닉네임 중복 체크 (CheckNameDuplicate)</a>
+                  </li>
+                  <li>
+                    <a href="#checklogintokenvalid" class="toc-h2 toc-link" data-title="로그인 토큰 유효성 체크 (CheckLoginTokenValid)">로그인 토큰 유효성 체크 (CheckLoginTokenValid)</a>
                   </li>
               </ul>
           </li>
@@ -367,23 +370,23 @@
 로그인 토큰은 API 전송시 header에 <code>Authorization</code> 값으로 전달해야 합니다. 
 (다만 토큰이 없어도 로그인이 불필요한 API는 사용 가능)
 </aside>
-<h1 id='de2aa79784'>사용자 계정</h1><h2 id='f772375124'>회원 가입</h2>
+<h1 id='user'>User</h1><h2 id='signup'>회원가입 (Signup)</h2>
 <blockquote>
-<p>회원가입 Mutation:</p>
+<p>Mutation:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">Signup</span><span class="p">(</span><span class="nv">$user</span><span class="p">:</span><span class="w"> </span><span class="n">UserInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">signup</span><span class="p">(</span><span class="n">user</span><span class="p">:</span><span class="w"> </span><span class="nv">$user</span><span class="p">)</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>결과값 예시</p>
+<p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="err">"</span><span class="n">signup</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='userinput'>UserInput 객체</h3>
+</span></code></pre></div><h3 id='userinput'>UserInput</h3>
 <table><thead>
 <tr>
 <th>변수명</th>
@@ -411,9 +414,9 @@
 <td>비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)</td>
 </tr>
 </tbody></table>
-<h2 id='e225a6fd75'>로그인</h2>
+<h2 id='login'>로그인 (Login)</h2>
 <blockquote>
-<p>로그인 Mutation:</p>
+<p>Mutation:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">Login</span><span class="p">(</span><span class="nv">$email</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$password</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">login</span><span class="p">(</span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="nv">$email</span><span class="p">,</span><span class="w"> </span><span class="n">password</span><span class="p">:</span><span class="w"> </span><span class="nv">$password</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -429,7 +432,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
-<p>결과값 예시</p>
+<p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -445,9 +448,7 @@
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p><strong>입력값</strong></p>
-
+</span></code></pre></div><h3 id='input'>Input</h3>
 <table><thead>
 <tr>
 <th>변수명</th>
@@ -469,9 +470,7 @@
 <td>비밀번호</td>
 </tr>
 </tbody></table>
-
-<p>결과값 (accessToken, refreshToken)</p>
-
+<h3 id='logintoken'>LoginToken</h3>
 <table><thead>
 <tr>
 <th>변수명</th>
@@ -493,9 +492,51 @@
 <td>토큰 헤더 (Bearer)</td>
 </tr>
 </tbody></table>
-<h2 id='e134f443a9'>내 정보 조회</h2>
-<p>UserInput 객체</p>
-
+<h2 id='getmyinfo'>내 정보 조회 (GetMyInfo)</h2>
+<blockquote>
+<p>Query:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">getMyInfo</span><span class="p">{</span><span class="w">
+    </span><span class="n">id</span><span class="w">
+    </span><span class="n">isVerified</span><span class="w">
+    </span><span class="n">email</span><span class="w">
+    </span><span class="n">name</span><span class="w">
+    </span><span class="n">profileImageUrl</span><span class="w">
+    </span><span class="n">Addresses</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">isDefaultAddress</span><span class="w">
+        </span><span class="n">recipientName</span><span class="w">
+        </span><span class="n">countryCode</span><span class="w">
+        </span><span class="n">address1</span><span class="w">
+        </span><span class="n">address2</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="n">isSeller</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"getMyInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6595f665-c21d-48ae-912f-562a5080fbf2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jmlee@voiij.co.kr"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jmlee"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"profileImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"Addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"isDefaultAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"서울 강서구 강서로37길 77"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"지명아트빌라 201호"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07710"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KR"</span><span class="p">,</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"isSeller"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='user-2'>User</h3>
 <table><thead>
 <tr>
 <th>변수명</th>
@@ -504,6 +545,18 @@
 <th>설명</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>Y</td>
+<td>사용자 ID</td>
+</tr>
+<tr>
+<td>isVerified</td>
+<td>Boolean</td>
+<td>Y</td>
+<td>사용자 인증 완료 여부</td>
+</tr>
 <tr>
 <td>email</td>
 <td>String</td>
@@ -517,126 +570,149 @@
 <td>이름(닉네임)</td>
 </tr>
 <tr>
-<td>password</td>
+<td>profileImageUrl</td>
+<td>String</td>
+<td>N</td>
+<td>프로필 사진 url</td>
+</tr>
+<tr>
+<td>Addresses</td>
+<td>[Address]</td>
+<td>Y</td>
+<td>사용자 배송 주소</td>
+</tr>
+<tr>
+<td>isSeller</td>
 <td>String</td>
 <td>Y</td>
-<td>비밀번호 (최소 8자, 최대 20자, 영어/숫자/특수문자 포함, 공백 입력 불가)</td>
+<td>판매자 여부</td>
 </tr>
 </tbody></table>
-
+<h3 id='address'>Address</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>isDefaultAddress</td>
+<td>String</td>
+<td>Y</td>
+<td>대표 주소 여부</td>
+</tr>
+<tr>
+<td>recipientName</td>
+<td>Boolean</td>
+<td>Y</td>
+<td>수령인 이름</td>
+</tr>
+<tr>
+<td>countryCode</td>
+<td>String</td>
+<td>Y</td>
+<td>국가 코드</td>
+</tr>
+<tr>
+<td>address1</td>
+<td>String</td>
+<td>Y</td>
+<td>주소1</td>
+</tr>
+<tr>
+<td>address2</td>
+<td>String</td>
+<td>Y</td>
+<td>주소2</td>
+</tr>
+<tr>
+<td>postalCode</td>
+<td>String</td>
+<td>N</td>
+<td>한국 (postalCode)</td>
+</tr>
+<tr>
+<td>city</td>
+<td>String</td>
+<td>N</td>
+<td>미국, 영국 (city)</td>
+</tr>
+<tr>
+<td>county</td>
+<td>String</td>
+<td>N</td>
+<td>영국 (county)</td>
+</tr>
+<tr>
+<td>postCode</td>
+<td>String</td>
+<td>N</td>
+<td>영국 (postCode)</td>
+</tr>
+<tr>
+<td>state</td>
+<td>String</td>
+<td>N</td>
+<td>미국 (state)</td>
+</tr>
+<tr>
+<td>zipCode</td>
+<td>String</td>
+<td>N</td>
+<td>미국 (zipCode)</td>
+</tr>
+</tbody></table>
+<h2 id='checkemailduplicate'>이메일 중복 체크 (CheckEmailDuplicate)</h2>
 <blockquote>
-<p>회원가입 Mutation:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight plaintext"><code>mutation Signup($user: UserInput!) {
-  signup(user: $user)
+<p>Query:
+<code>graphql
+query CheckEmailDuplicate($email: String!) {
+  checkEmailDuplicate(email: $email)
 }
-</code></pre></div>
-<blockquote>
-<p>결과값 예시</p>
+</code></p>
+
+<p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"signup"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+        </span><span class="nl">"checkEmailDuplicate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request'>HTTP Request</h3>
-<p><code>query getSimpleRecommendedProductsByCursor</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight jsx tab-jsx"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
+</span></code></pre></div><h2 id='checknameduplicate'>닉네임 중복 체크 (CheckNameDuplicate)</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Query:
+<code>graphql
+query CheckNameDuplicate($name: String!) {
+  checkNameDuplicate(name: $name)
+}
+</code></p>
+
+<p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"checkNameDuplicate"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span> <span class="se">\</span>
-  <span class="nt">-X</span> DELETE <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
+</span></code></pre></div><h2 id='checklogintokenvalid'>로그인 토큰 유효성 체크 (CheckLoginTokenValid)</h2>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Query:
+<code>graphql
+query CheckLoginTokenValid {
+    checkLoginTokenValid
+}
+</code></p>
+
+<p>결과값</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"checkLoginTokenValid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
+</span></code></pre></div><h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
