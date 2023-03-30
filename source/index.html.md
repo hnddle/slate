@@ -202,6 +202,7 @@ zipCode | String | N | 미국 (zipCode)
 ## 이메일 중복 체크 (CheckEmailDuplicate)
 
 > Query:
+
 ```graphql
 query CheckEmailDuplicate($email: String!) {
   checkEmailDuplicate(email: $email)
@@ -221,6 +222,7 @@ query CheckEmailDuplicate($email: String!) {
 ## 닉네임 중복 체크 (CheckNameDuplicate)
 
 > Query:
+
 ```graphql
 query CheckNameDuplicate($name: String!) {
   checkNameDuplicate(name: $name)
@@ -240,6 +242,7 @@ query CheckNameDuplicate($name: String!) {
 ## 로그인 토큰 유효성 체크 (CheckLoginTokenValid)
 
 > Query:
+
 ```graphql
 query CheckLoginTokenValid {
 	checkLoginTokenValid
@@ -259,6 +262,7 @@ query CheckLoginTokenValid {
 ## Refresh 토큰 로그인, 로그인 토큰 연장 (LoginWithRefreshToken)
 
 > Mutation:
+
 ```graphql
 mutation LoginWithRefreshToken($refreshToken: JWTTokenInput!) {
 	loginWithRefreshToken(refreshToken : $refreshToken) {
@@ -296,6 +300,7 @@ mutation LoginWithRefreshToken($refreshToken: JWTTokenInput!) {
 ## 비밀번호 변경 (UpdatePassword)
 
 > Mutation:
+
 ```graphql
 mutation UpdatePassword($password: String!, $newPassword: String!) {
   updatePassword(password: $password, newPassword: $newPassword)
@@ -315,6 +320,7 @@ mutation UpdatePassword($password: String!, $newPassword: String!) {
 ## 닉네임 변경 (CheckLoginTokenValid)
 
 > Mutation:
+
 ```graphql
 mutation UpdateName($name: String!) {
   updateName(name: $name)
@@ -334,6 +340,7 @@ mutation UpdateName($name: String!) {
 ## 이메일 인증 (VerifyEmail)
 
 > Mutation:
+
 ```graphql
 mutation VerifyEmail($userId: String!, $authCode: String!) {
   verifyEmail(userId: $userId, authCode: $authCode)
@@ -355,6 +362,7 @@ mutation VerifyEmail($userId: String!, $authCode: String!) {
 로직 수정 필요! (현재 에러 발생)
 
 > Mutation:
+
 ```graphql
 mutation DeleteUserAccount {
   deleteUserAccount 
@@ -376,6 +384,7 @@ mutation DeleteUserAccount {
 별도 통합/단위 테스트 필요!
 
 > Mutation:
+
 ```graphql
 mutation ChangeUserProfileImage($userProfileImage: Upload!) {
   changeUserProfileImage(userProfileImage: $userProfileImage)
