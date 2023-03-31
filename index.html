@@ -387,13 +387,19 @@
                   <li>
                     <a href="#registerlicense" class="toc-h2 toc-link" data-title="라이선스 등록 (registerLicense)">라이선스 등록 (registerLicense)</a>
                   </li>
+                  <li>
+                    <a href="#updatelicense" class="toc-h2 toc-link" data-title="라이선스 수정 (updateLicense)">라이선스 수정 (updateLicense)</a>
+                  </li>
+                  <li>
+                    <a href="#deletelicense" class="toc-h2 toc-link" data-title="라이선스 삭제 (deleteLicense)">라이선스 삭제 (deleteLicense)</a>
+                  </li>
               </ul>
           </li>
           <li>
             <a href="#seller" class="toc-h1 toc-link" data-title="판매자 (Seller)">판매자 (Seller)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#registerseller" class="toc-h2 toc-link" data-title="판매자 등록 (RegisterSeller)">판매자 등록 (RegisterSeller)</a>
+                    <a href="#registerseller" class="toc-h2 toc-link" data-title="판매자 가입/등록 (RegisterSeller)">판매자 가입/등록 (RegisterSeller)</a>
                   </li>
                   <li>
                     <a href="#deleteseller" class="toc-h2 toc-link" data-title="판매자 탈퇴 (DeleteSeller)">판매자 탈퇴 (DeleteSeller)</a>
@@ -404,10 +410,16 @@
             <a href="#product" class="toc-h1 toc-link" data-title="상품 (Product)">상품 (Product)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#getproductview" class="toc-h2 toc-link" data-title="상품 조회 (GetProductView)">상품 조회 (GetProductView)</a>
+                    <a href="#getsimplerecommendedproductsbycursor" class="toc-h2 toc-link" data-title="임시 상품 추천 (GetSimpleRecommendedProductsByCursor)">임시 상품 추천 (GetSimpleRecommendedProductsByCursor)</a>
                   </li>
                   <li>
-                    <a href="#getproductview-2" class="toc-h2 toc-link" data-title="상품 추가 (GetProductView)">상품 추가 (GetProductView)</a>
+                    <a href="#getproductview" class="toc-h2 toc-link" data-title="상품 목록 단건 조회 (GetProductView)">상품 목록 단건 조회 (GetProductView)</a>
+                  </li>
+                  <li>
+                    <a href="#addproduct" class="toc-h2 toc-link" data-title="상품 추가 (AddProduct)">상품 추가 (AddProduct)</a>
+                  </li>
+                  <li>
+                    <a href="#updateproduct" class="toc-h2 toc-link" data-title="상품 수정 (UpdateProduct)">상품 수정 (UpdateProduct)</a>
                   </li>
               </ul>
           </li>
@@ -1174,7 +1186,7 @@
         </span><span class="err">"</span><span class="n">registerLicense</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='productinput'>ProductInput</h3>
+</span></code></pre></div><h3 id='licenseinput'>LicenseInput</h3>
 <table><thead>
 <tr>
 <th>변수명</th>
@@ -1184,67 +1196,207 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>recipientName</td>
+<td>isEnabled</td>
 <td>Boolean</td>
 <td>Y</td>
-<td>수령인 이름</td>
+<td>활성화 여부</td>
 </tr>
 <tr>
-<td>countryCode</td>
+<td>isApprovalRequired</td>
+<td>String</td>
+<td>N</td>
+<td>승인 필요 여부 (미사용)</td>
+</tr>
+<tr>
+<td>allowedBusinessTypes</td>
+<td>[String]</td>
+<td>N</td>
+<td>허용 사업 형태 (미사용)</td>
+</tr>
+<tr>
+<td>representativeImageUrl</td>
 <td>String</td>
 <td>Y</td>
-<td>국가 코드</td>
+<td>대표 이미지 url</td>
 </tr>
 <tr>
-<td>address1</td>
+<td>thumbnailImageUrl</td>
 <td>String</td>
 <td>Y</td>
-<td>주소1</td>
+<td>썸네일 이미지 url</td>
 </tr>
 <tr>
-<td>address2</td>
+<td>minimumGuarantee</td>
+<td>Int</td>
+<td>N</td>
+<td>라이선스 MG 수수료 (미사용)</td>
+</tr>
+<tr>
+<td>runningGuaranteeRate</td>
+<td>Int</td>
+<td>Y</td>
+<td>라이선스 RG 수수료</td>
+</tr>
+<tr>
+<td>name</td>
 <td>String</td>
 <td>Y</td>
-<td>주소2</td>
+<td>라이선스명</td>
 </tr>
 <tr>
-<td>postalCode</td>
+<td>shortDescription</td>
 <td>String</td>
-<td>N</td>
-<td>한국 (postalCode)</td>
+<td>Y</td>
+<td>짧은 설명글</td>
 </tr>
 <tr>
-<td>city</td>
-<td>String</td>
+<td>tags</td>
+<td>[String]</td>
 <td>N</td>
-<td>미국, 영국 (city)</td>
+<td>태그</td>
 </tr>
 <tr>
-<td>county</td>
+<td>descriptionHtml</td>
 <td>String</td>
-<td>N</td>
-<td>영국 (county)</td>
+<td>Y</td>
+<td>설명 html</td>
 </tr>
 <tr>
-<td>postCode</td>
+<td>guideLine</td>
 <td>String</td>
 <td>N</td>
-<td>영국 (postCode)</td>
+<td>라이선스 가이드라인</td>
 </tr>
 <tr>
-<td>state</td>
-<td>String</td>
+<td>endPeriod</td>
+<td>DateTime</td>
 <td>N</td>
-<td>미국 (state)</td>
-</tr>
-<tr>
-<td>zipCode</td>
-<td>String</td>
-<td>N</td>
-<td>미국 (zipCode)</td>
+<td>라이선스 종료일 (무기한 == NULL)</td>
 </tr>
 </tbody></table>
-<h1 id='seller'>판매자 (Seller)</h1><h2 id='registerseller'>판매자 등록 (RegisterSeller)</h2>
+<h2 id='updatelicense'>라이선스 수정 (updateLicense)</h2>
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">UpdateLicense</span><span class="p">(</span><span class="nv">$licenseId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$license</span><span class="p">:</span><span class="w"> </span><span class="n">LicenseInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateLicense</span><span class="p">(</span><span class="n">licenseId</span><span class="p">:</span><span class="w"> </span><span class="nv">$licenseId</span><span class="p">,</span><span class="w"> </span><span class="n">license</span><span class="p">:</span><span class="w"> </span><span class="nv">$license</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">updateLicense</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='licenseinput-2'>LicenseInput</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>isEnabled</td>
+<td>Boolean</td>
+<td>Y</td>
+<td>활성화 여부</td>
+</tr>
+<tr>
+<td>isApprovalRequired</td>
+<td>String</td>
+<td>N</td>
+<td>승인 필요 여부 (미사용)</td>
+</tr>
+<tr>
+<td>allowedBusinessTypes</td>
+<td>[String]</td>
+<td>N</td>
+<td>허용 사업 형태 (미사용)</td>
+</tr>
+<tr>
+<td>representativeImageUrl</td>
+<td>String</td>
+<td>Y</td>
+<td>대표 이미지 url</td>
+</tr>
+<tr>
+<td>thumbnailImageUrl</td>
+<td>String</td>
+<td>Y</td>
+<td>썸네일 이미지 url</td>
+</tr>
+<tr>
+<td>minimumGuarantee</td>
+<td>Int</td>
+<td>N</td>
+<td>라이선스 MG 수수료 (미사용)</td>
+</tr>
+<tr>
+<td>runningGuaranteeRate</td>
+<td>Int</td>
+<td>Y</td>
+<td>라이선스 RG 수수료</td>
+</tr>
+<tr>
+<td>name</td>
+<td>String</td>
+<td>Y</td>
+<td>라이선스명</td>
+</tr>
+<tr>
+<td>shortDescription</td>
+<td>String</td>
+<td>Y</td>
+<td>짧은 설명글</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>[String]</td>
+<td>N</td>
+<td>태그</td>
+</tr>
+<tr>
+<td>descriptionHtml</td>
+<td>String</td>
+<td>Y</td>
+<td>설명 html</td>
+</tr>
+<tr>
+<td>guideLine</td>
+<td>String</td>
+<td>N</td>
+<td>라이선스 가이드라인</td>
+</tr>
+<tr>
+<td>endPeriod</td>
+<td>DateTime</td>
+<td>N</td>
+<td>라이선스 종료일 (무기한 == NULL)</td>
+</tr>
+</tbody></table>
+<h2 id='deletelicense'>라이선스 삭제 (deleteLicense)</h2>
+<p>상품 판매 정지 개발 필요 (사유까지)</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">DeleteLicense</span><span class="p">(</span><span class="nv">$licenseId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$license</span><span class="p">:</span><span class="w"> </span><span class="n">LicenseInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deleteLicense</span><span class="p">(</span><span class="n">licenseId</span><span class="p">:</span><span class="w"> </span><span class="nv">$licenseId</span><span class="p">,</span><span class="w"> </span><span class="n">license</span><span class="p">:</span><span class="w"> </span><span class="nv">$license</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">deleteLicense</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='seller'>판매자 (Seller)</h1><h2 id='registerseller'>판매자 가입/등록 (RegisterSeller)</h2>
 <blockquote>
 <p>Mutation:</p>
 </blockquote>
@@ -1260,7 +1412,29 @@
         </span><span class="err">"</span><span class="n">registerSeller</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='deleteseller'>판매자 탈퇴 (DeleteSeller)</h2>
+</span></code></pre></div><h3 id='sellerinput'>SellerInput</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>country</td>
+<td>String</td>
+<td>Y</td>
+<td>국가코드</td>
+</tr>
+<tr>
+<td>businessType</td>
+<td>String</td>
+<td>Y</td>
+<td>사업 종류</td>
+</tr>
+</tbody></table>
+<h2 id='deleteseller'>판매자 탈퇴 (DeleteSeller)</h2>
 <p>현재 에러! 기능 수정 필요 (체크해야할 데이터가 많기 때문)</p>
 
 <blockquote>
@@ -1278,11 +1452,100 @@
         </span><span class="err">"</span><span class="n">deleteSeller</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='product'>상품 (Product)</h1><h2 id='getproductview'>상품 조회 (GetProductView)</h2>
+</span></code></pre></div><h1 id='product'>상품 (Product)</h1><h2 id='getsimplerecommendedproductsbycursor'>임시 상품 추천 (GetSimpleRecommendedProductsByCursor)</h2>
 <blockquote>
 <p>Query:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">GetProduct</span><span class="p">(</span><span class="w">
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">GetSimpleRecommendedProductsByCursor</span><span class="p">(</span><span class="w">
+    </span><span class="nv">$currency</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
+    </span><span class="nv">$shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">getSimpleRecommendedProductsByCursor</span><span class="p">(</span><span class="w">
+        </span><span class="n">currency</span><span class="p">:</span><span class="w"> </span><span class="nv">$currency</span><span class="p">,</span><span class="w">
+        </span><span class="n">shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nv">$shippingCountry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">id</span><span class="w">
+            </span><span class="n">name</span><span class="w">
+            </span><span class="n">listPrice</span><span class="w">
+            </span><span class="n">salePrice</span><span class="w">
+            </span><span class="n">isDiscountApplied</span><span class="w">
+            </span><span class="n">discountRate</span><span class="w">
+            </span><span class="n">currency</span><span class="w">
+            </span><span class="n">shippingCountries</span><span class="w">
+            </span><span class="n">stockQuantity</span><span class="w">
+            </span><span class="n">thumbnailImageUrl</span><span class="w">
+            </span><span class="n">representativeImageUrl</span><span class="w">
+            </span><span class="n">additionalImageUrls</span><span class="w">
+            </span><span class="n">descriptionHtml</span><span class="w">
+            </span><span class="n">isOnSale</span><span class="w">
+            </span><span class="n">isAdultProduct</span><span class="w">
+            </span><span class="n">isDeliveryBundled</span><span class="w">
+            </span><span class="n">licenseThumbnailImageUrl</span><span class="w">
+            </span><span class="n">licenseName</span><span class="w">
+            </span><span class="n">sellerBusinessType</span><span class="w">
+            </span><span class="n">sellerCountry</span><span class="w">
+            </span><span class="n">sellerName</span><span class="w">
+            </span><span class="n">sellerProfileImageUrl</span><span class="w">
+            </span><span class="n">tags</span><span class="w">
+            </span><span class="n">numberOfSales</span><span class="w">
+            </span><span class="n">numberOfLikes</span><span class="w">
+            </span><span class="n">averageReviewScore</span><span class="w">
+            </span><span class="n">numberOfReviews</span><span class="w">
+            </span><span class="n">createdDate</span><span class="w">
+            </span><span class="n">modifiedDate</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"getSimpleRecommendedProductsByCursor"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"be465a41-d3cd-456e-940a-119760f2f638"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"제품명"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"listPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"salePrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isDiscountApplied"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">50.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"shippingCountries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"KR"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"stockQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"thumbnailImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"representativeImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"additionalImageUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"descriptionHtml"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isOnSale"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isAdultProduct"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isDeliveryBundled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"licenseThumbnailImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"licenseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"라이선스"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sellerBusinessType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sellerCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KR"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sellerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jmlee"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sellerProfileImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"tag1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"tag2"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"numberOfSales"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"numberOfLikes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"averageReviewScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"numberOfReviews"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-31T12:27:25.139665"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"modifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-31T12:27:25.164689"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='getproductview'>상품 목록 단건 조회 (GetProductView)</h2>
+<blockquote>
+<p>Query:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">GetProductView</span><span class="p">(</span><span class="w">
     </span><span class="nv">$currency</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
     </span><span class="nv">$shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w">
     </span><span class="nv">$productId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1317,15 +1580,9 @@
             </span><span class="n">numberOfLikes</span><span class="w">
             </span><span class="n">averageReviewScore</span><span class="w">
             </span><span class="n">numberOfReviews</span><span class="w">
-            </span><span class="n">productDeliveries</span><span class="p">{</span><span class="w">
-                </span><span class="n">countryCode</span><span class="w">
-                </span><span class="n">shippingFee</span><span class="w">
-                </span><span class="n">deliveryLeadTime</span><span class="w">
-            </span><span class="p">}</span><span class="w">
             </span><span class="n">createdDate</span><span class="w">
             </span><span class="n">modifiedDate</span><span class="w">
         </span><span class="p">}</span><span class="w">
-
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -1333,28 +1590,49 @@
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"getMyInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6595f665-c21d-48ae-912f-562a5080fbf2"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"isVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jmlee@voiij.co.kr"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jmlee"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"profileImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"Addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="p">{</span><span class="w">
-                </span><span class="nl">"isDefaultAddress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"address1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"서울 강서구 강서로37길 77"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"address2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"지명아트빌라 201호"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"postalCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07710"</span><span class="p">,</span><span class="w">
-                </span><span class="nl">"countryCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KR"</span><span class="p">,</span><span class="w">
-                </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"getProductView"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"be465a41-d3cd-456e-940a-119760f2f638"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"제품명"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"listPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"salePrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isDiscountApplied"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">50.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"shippingCountries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"KR"</span><span class="w">
             </span><span class="p">],</span><span class="w">
-            </span><span class="nl">"isSeller"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="nl">"stockQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"thumbnailImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"representativeImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"additionalImageUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"descriptionHtml"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isOnSale"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isAdultProduct"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"isDeliveryBundled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"licenseThumbnailImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"licenseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"라이선스"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sellerBusinessType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sellerCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KR"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sellerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jmlee"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"sellerProfileImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"tag1"</span><span class="p">,</span><span class="w">
+                </span><span class="s2">"tag2"</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="nl">"numberOfSales"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"numberOfLikes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"averageReviewScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"numberOfReviews"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-31T12:27:25.139665"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"modifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-31T12:27:25.164689"</span><span class="w">
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='getproductview-2'>상품 추가 (GetProductView)</h2>
+</span></code></pre></div><h2 id='addproduct'>상품 추가 (AddProduct)</h2>
 <blockquote>
-<p>Query:</p>
+<p>Mutation:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">AddProduct</span><span class="p">(</span><span class="w">
     </span><span class="nv">$product</span><span class="p">:</span><span class="w"> </span><span class="n">ProductInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1369,7 +1647,7 @@
         </span><span class="nl">"addProduct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='user-3'>User</h3>
+</span></code></pre></div><h3 id='productinput'>ProductInput</h3>
 <table><thead>
 <tr>
 <th>변수명</th>
@@ -1379,49 +1657,79 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>String</td>
-<td>Y</td>
-<td>사용자 ID</td>
-</tr>
-<tr>
-<td>isVerified</td>
+<td>isOnSale</td>
 <td>Boolean</td>
 <td>Y</td>
-<td>사용자 인증 완료 여부</td>
+<td>판매 여부</td>
 </tr>
 <tr>
-<td>email</td>
-<td>String</td>
+<td>isAdultProduct</td>
+<td>Boolean</td>
 <td>Y</td>
-<td>이메일</td>
+<td>성인 상품 여부</td>
+</tr>
+<tr>
+<td>isDeliveryBundled</td>
+<td>Boolean</td>
+<td>Y</td>
+<td>묶음 상품 여부</td>
+</tr>
+<tr>
+<td>stockQuantity</td>
+<td>Int</td>
+<td>Y</td>
+<td>재고 수량</td>
 </tr>
 <tr>
 <td>name</td>
 <td>String</td>
 <td>Y</td>
-<td>이름(닉네임)</td>
+<td>제품명</td>
 </tr>
 <tr>
-<td>profileImageUrl</td>
+<td>tags</td>
+<td>[String]</td>
+<td>N</td>
+<td>태그</td>
+</tr>
+<tr>
+<td>representativeImageUrl</td>
+<td>String</td>
+<td>Y</td>
+<td>대표 이미지 Url</td>
+</tr>
+<tr>
+<td>thumbnailImageUrl</td>
+<td>String</td>
+<td>Y</td>
+<td>썸네일 이미지 Url</td>
+</tr>
+<tr>
+<td>additionalImageUrls</td>
 <td>String</td>
 <td>N</td>
-<td>프로필 사진 url</td>
+<td>추가 이미지 Url</td>
 </tr>
 <tr>
-<td>Addresses</td>
-<td>[Address]</td>
-<td>Y</td>
-<td>사용자 배송 주소</td>
-</tr>
-<tr>
-<td>isSeller</td>
+<td>descriptionHtml</td>
 <td>String</td>
 <td>Y</td>
-<td>판매자 여부</td>
+<td>상품 설명 HTML</td>
+</tr>
+<tr>
+<td>licenseId</td>
+<td>String</td>
+<td>Y</td>
+<td>사용 라이선스 ID</td>
+</tr>
+<tr>
+<td>productPriceInputs</td>
+<td>[ProductPriceInput]</td>
+<td>Y</td>
+<td>상품 가격 정보</td>
 </tr>
 </tbody></table>
-<h3 id='address-2'>Address</h3>
+<h3 id='productpriceinput'>ProductPriceInput</h3>
 <table><thead>
 <tr>
 <th>변수명</th>
@@ -1431,17 +1739,39 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>isDefaultAddress</td>
-<td>String</td>
+<td>listPrice</td>
+<td>Int</td>
 <td>Y</td>
-<td>대표 주소 여부</td>
+<td>정가</td>
 </tr>
 <tr>
-<td>recipientName</td>
-<td>Boolean</td>
+<td>salePrice</td>
+<td>Int</td>
 <td>Y</td>
-<td>수령인 이름</td>
+<td>판매가</td>
 </tr>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>Y</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>productDeliveryInputs</td>
+<td>[ProductDeliveryInput]</td>
+<td>Y</td>
+<td>상품 배송 정보</td>
+</tr>
+</tbody></table>
+<h3 id='productdeliveryinput'>ProductDeliveryInput</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>countryCode</td>
 <td>String</td>
@@ -1449,52 +1779,179 @@
 <td>국가 코드</td>
 </tr>
 <tr>
-<td>address1</td>
+<td>shippingFee</td>
+<td>Int</td>
+<td>Y</td>
+<td>배송비</td>
+</tr>
+<tr>
+<td>deliveryLeadTime</td>
 <td>String</td>
 <td>Y</td>
-<td>주소1</td>
+<td>배송 소요 시간</td>
+</tr>
+</tbody></table>
+<h2 id='updateproduct'>상품 수정 (UpdateProduct)</h2>
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">UpdateProduct</span><span class="p">(</span><span class="nv">$productId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$product</span><span class="p">:</span><span class="w"> </span><span class="n">ProductInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">updateProduct</span><span class="p">(</span><span class="w">
+        </span><span class="n">productId</span><span class="p">:</span><span class="w"> </span><span class="nv">$productId</span><span class="w">
+    </span><span class="n">product</span><span class="p">:</span><span class="w"> </span><span class="nv">$product</span><span class="w">
+  </span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"updateProduct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='productinput-2'>ProductInput</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>isOnSale</td>
+<td>Boolean</td>
+<td>Y</td>
+<td>판매 여부</td>
 </tr>
 <tr>
-<td>address2</td>
+<td>isAdultProduct</td>
+<td>Boolean</td>
+<td>Y</td>
+<td>성인 상품 여부</td>
+</tr>
+<tr>
+<td>isDeliveryBundled</td>
+<td>Boolean</td>
+<td>Y</td>
+<td>묶음 상품 여부</td>
+</tr>
+<tr>
+<td>stockQuantity</td>
+<td>Int</td>
+<td>Y</td>
+<td>재고 수량</td>
+</tr>
+<tr>
+<td>name</td>
 <td>String</td>
 <td>Y</td>
-<td>주소2</td>
+<td>제품명</td>
 </tr>
 <tr>
-<td>postalCode</td>
-<td>String</td>
+<td>tags</td>
+<td>[String]</td>
 <td>N</td>
-<td>한국 (postalCode)</td>
+<td>태그</td>
 </tr>
 <tr>
-<td>city</td>
+<td>representativeImageUrl</td>
 <td>String</td>
-<td>N</td>
-<td>미국, 영국 (city)</td>
+<td>Y</td>
+<td>대표 이미지 Url</td>
 </tr>
 <tr>
-<td>county</td>
+<td>thumbnailImageUrl</td>
 <td>String</td>
-<td>N</td>
-<td>영국 (county)</td>
+<td>Y</td>
+<td>썸네일 이미지 Url</td>
 </tr>
 <tr>
-<td>postCode</td>
+<td>additionalImageUrls</td>
 <td>String</td>
 <td>N</td>
-<td>영국 (postCode)</td>
+<td>추가 이미지 Url</td>
 </tr>
 <tr>
-<td>state</td>
+<td>descriptionHtml</td>
 <td>String</td>
-<td>N</td>
-<td>미국 (state)</td>
+<td>Y</td>
+<td>상품 설명 HTML</td>
 </tr>
 <tr>
-<td>zipCode</td>
+<td>licenseId</td>
 <td>String</td>
-<td>N</td>
-<td>미국 (zipCode)</td>
+<td>Y</td>
+<td>사용 라이선스 ID</td>
+</tr>
+<tr>
+<td>productPriceInputs</td>
+<td>[ProductPriceInput]</td>
+<td>Y</td>
+<td>상품 가격 정보</td>
+</tr>
+</tbody></table>
+<h3 id='productpriceinput-2'>ProductPriceInput</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>listPrice</td>
+<td>Int</td>
+<td>Y</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>salePrice</td>
+<td>Int</td>
+<td>Y</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>Y</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>productDeliveryInputs</td>
+<td>[ProductDeliveryInput]</td>
+<td>Y</td>
+<td>상품 배송 정보</td>
+</tr>
+</tbody></table>
+<h3 id='productdeliveryinput-2'>ProductDeliveryInput</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>countryCode</td>
+<td>String</td>
+<td>Y</td>
+<td>국가 코드</td>
+</tr>
+<tr>
+<td>shippingFee</td>
+<td>Int</td>
+<td>Y</td>
+<td>배송비</td>
+</tr>
+<tr>
+<td>deliveryLeadTime</td>
+<td>String</td>
+<td>Y</td>
+<td>배송 소요 시간</td>
 </tr>
 </tbody></table>
 <h1 id='cart'>장바구니 (Cart)</h1><h2 id='resetpassword-2'>비밀번호 초기화 (ResetPassword)</h2>
