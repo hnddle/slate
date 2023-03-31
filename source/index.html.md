@@ -1281,8 +1281,6 @@ mutation UploadProductAdditionalImages($images: [Upload!]!) {
 
 ## 장바구니 조회 (GetCartView)
 
-테스트 필요!
-
 > Query:
 
 ```graphql
@@ -1380,8 +1378,6 @@ isShippingAvailable | Boolean | N | 통화 코드
 
 ## 장바구니 상품 추가 (AddItemToCart)
 
-테스트 필요!
-
 > Mutation:
 
 ```graphql
@@ -1439,8 +1435,6 @@ isShippingAvailable | Boolean | N | 통화 코드
 
 ## 장바구니 상품 수량 변경 (SetCartItemQuantity)
 
-테스트 필요!
-
 > Mutation:
 
 ```graphql
@@ -1469,8 +1463,6 @@ mutation SetCartItemQuantity(
 
 ## 장바구니 상품 삭제 (DeleteCartItem)
 
-테스트 필요!
-
 > Mutation:
 
 ```graphql
@@ -1490,8 +1482,6 @@ mutation DeleteCartItem($cartItemId: String!) {
 ```
 
 ## 장바구니 상품 다수 삭제 (DeleteCartItems)
-
-테스트 필요!
 
 > Mutation:
 
