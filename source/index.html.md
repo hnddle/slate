@@ -862,6 +862,110 @@ query GetSimpleRecommendedProductsByCursor(
 }
 ```
 
+## 상품 검색 (SearchProducts)
+
+오류 수정 필요! 기능 완성/구현 필요!
+
+> Query:
+
+```graphql
+query SearchProducts(
+	$shippingCountry: String!, 
+	$currency: String!,
+	$searchString: String!, 
+	$minPrice: Int, 
+	$maxPrice: Int, 
+	$pageNumber: Int) {
+  searchProducts(
+		shippingCountry: $shippingCountry,
+    currency: $currency,
+    searchString: $searchString,
+    minPrice: $minPrice,
+    maxPrice: $maxPrice,
+    pageNumber: $pageNumber
+  ) {
+			id
+			name
+			listPrice
+			salePrice
+			isDiscountApplied
+			discountRate
+			currency
+			shippingCountries
+			stockQuantity
+			thumbnailImageUrl
+			representativeImageUrl
+			additionalImageUrls
+			descriptionHtml
+			isOnSale
+			isAdultProduct
+			isDeliveryBundled
+			licenseThumbnailImageUrl
+			licenseName
+			sellerBusinessType
+			sellerCountry
+			sellerName
+			sellerProfileImageUrl
+			tags
+			numberOfSales
+			numberOfLikes
+			averageReviewScore
+			numberOfReviews
+			createdDate
+			modifiedDate
+		}
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"searchProducts": [
+			{
+				"id": "be465a41-d3cd-456e-940a-119760f2f638",
+				"name": "제품명",
+				"listPrice": 200000,
+				"salePrice": 100000,
+				"isDiscountApplied": true,
+				"discountRate": 50.0,
+				"currency": "KRW",
+				"shippingCountries": [
+					"KR"
+				],
+				"stockQuantity": 10,
+				"thumbnailImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+				"representativeImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+				"additionalImageUrls": [
+					"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"
+				],
+				"descriptionHtml": "",
+				"isOnSale": false,
+				"isAdultProduct": false,
+				"isDeliveryBundled": true,
+				"licenseThumbnailImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+				"licenseName": "라이선스",
+				"sellerBusinessType": "INDIVIDUAL",
+				"sellerCountry": "KR",
+				"sellerName": "jmlee",
+				"sellerProfileImageUrl": null,
+				"tags": [
+					"tag1",
+					"tag2"
+				],
+				"numberOfSales": 0,
+				"numberOfLikes": 0,
+				"averageReviewScore": 0.0,
+				"numberOfReviews": 0,
+				"createdDate": "2023-03-31T12:27:25.139665",
+				"modifiedDate": "2023-03-31T14:55:12.584047"
+			}
+		]
+	}
+}
+```
+
 ## 상품 목록 단건 조회 (GetProductView)
 
 > Query:
@@ -1175,19 +1279,42 @@ mutation UploadProductAdditionalImages($images: [Upload!]!) {
 
 # 장바구니 (Cart)
 
-## 비밀번호 초기화 (ResetPassword)
+## 장바구니 조회 (GetCartView)
 
 테스트 필요!
 
-> Mutation:
+> Query:
 
 ```graphql
-mutation ResetPassword($email: String!, $passwordResetCode: String!, 
-	$newPassword: String!) {
-		
-	resetPassword(email: $email, 
-		passwordResetCode: $passwordResetCode, 
-		newPassword: $newPassword)
+query GetCartView(
+	$language: String!, 
+	$currency: String!,
+	$shippingCountry: String!) {
+  getCartView(
+		currency: $currency,
+		language: $language,
+    shippingCountry: $shippingCountry) {
+		#장바구니 상품 목록
+    currency
+    shippingCountry
+    totalCartPrice
+    cartViewItems {
+      id
+      productThumbnailImageUrl
+      productName
+			quantity
+      stockQuantity
+      sellerName
+			sellerProfileImageUrl
+			listPrice
+			salePrice
+			isDiscountApplied
+			discountRate
+			totalProductPrice
+			isCurrencyAvailable
+			isShippingAvailable
+    }
+  }
 }
 ```
 
@@ -1196,7 +1323,396 @@ mutation ResetPassword($email: String!, $passwordResetCode: String!,
 ```graphql
 {
 	"data": {
-		"resetPassword": "success"
+		"getCartView": {
+			"currency": "KRW",
+			"shippingCountry": "KR",
+			"totalCartPrice": 200000,
+			"cartViewItems": [
+				{
+					"id": "3255f15b-52f1-49d7-a139-9851bcde43e9",
+					"productThumbnailImageUrl": "be465a41-d3cd-456e-940a-119760f2f638",
+					"productName": "제품명",
+					"quantity": 2,
+					"stockQuantity": 10,
+					"sellerName": "jmlee",
+					"sellerProfileImageUrl": null,
+					"listPrice": 200000,
+					"salePrice": 100000,
+					"isDiscountApplied": true,
+					"discountRate": 50.0,
+					"totalProductPrice": 200000,
+					"isCurrencyAvailable": true,
+					"isShippingAvailable": true
+				}
+			]
+		}
 	}
 }
 ```
+
+### CartView
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+cartViewItems | [CartViewItem] | N | 장바구니 상품
+currency | String | N | 통화 코드
+shippingCountry | String | N | 배송 국가 코드
+totalCartPrice | Int | N | 장바구니 총 금액
+
+### CartViewItem
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+id | String | N | 정가
+productThumbnailImageUrl | String | N | 판매가
+productName | String | N | 통화 코드
+quantity | Int | N | 상품 배송 정보
+stockQuantity | Int | N | 정가
+sellerName | String | N | 판매가
+sellerProfileImageUrl | String | N | 통화 코드
+listPrice | Int | N | 상품 배송 정보
+salePrice | Int | N | 정가
+isDiscountApplied | Boolean | N | 통화 코드
+discountRate | Float | N | 상품 배송 정보
+totalProductPrice | Int | N | 정가
+isCurrencyAvailable | Boolean | N | 판매가
+isShippingAvailable | Boolean | N | 통화 코드
+
+## 장바구니 상품 추가 (AddItemToCart)
+
+테스트 필요!
+
+> Mutation:
+
+```graphql
+mutation AddItemToCart(
+	$shippingCountry: String!, 
+	$currency: String!,
+	$productId: String!,
+	$quantity: Int!) {
+  addItemToCart(
+		shippingCountry: $shippingCountry,
+    currency: $currency,
+    productId: $productId,
+    quantity: $quantity)
+}
+```
+
+> 결과값
+
+```graphql
+{
+	"data": {
+		"addItemToCart": "success"
+	}
+}
+```
+
+### CartView
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+cartViewItems | [CartViewItem] | N | 장바구니 상품
+currency | String | N | 통화 코드
+shippingCountry | String | N | 배송 국가 코드
+totalCartPrice | Int | N | 장바구니 총 금액
+
+### CartViewItem
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+id | String | N | 정가
+productThumbnailImageUrl | String | N | 판매가
+productName | String | N | 통화 코드
+quantity | Int | N | 상품 배송 정보
+stockQuantity | Int | N | 정가
+sellerName | String | N | 판매가
+sellerProfileImageUrl | String | N | 통화 코드
+listPrice | Int | N | 상품 배송 정보
+salePrice | Int | N | 정가
+isDiscountApplied | Boolean | N | 통화 코드
+discountRate | Float | N | 상품 배송 정보
+totalProductPrice | Int | N | 정가
+isCurrencyAvailable | Boolean | N | 판매가
+isShippingAvailable | Boolean | N | 통화 코드
+
+
+## 장바구니 상품 수량 변경 (SetCartItemQuantity)
+
+테스트 필요!
+
+> Mutation:
+
+```graphql
+mutation SetCartItemQuantity(
+	$shippingCountry: String!, 
+	$currency: String!,
+	$cartItemId: String!, 
+	$quantity: Int!) {
+  setCartItemQuantity(
+		shippingCountry: $shippingCountry,
+    currency: $currency,
+		cartItemId: $cartItemId, 
+		quantity: $quantity)
+}
+```
+
+> 결과값
+
+```graphql
+{
+	"data": {
+		"setCartItemQuantity": "success"
+	}
+}
+```
+
+## 장바구니 상품 삭제 (DeleteCartItem)
+
+테스트 필요!
+
+> Mutation:
+
+```graphql
+mutation DeleteCartItem($cartItemId: String!) {
+  deleteCartItem(cartItemId: $cartItemId)
+}
+```
+
+> 결과값
+
+```graphql
+{
+	"data": {
+		"deleteCartItem": "success"
+	}
+}
+```
+
+## 장바구니 상품 다수 삭제 (DeleteCartItems)
+
+테스트 필요!
+
+> Mutation:
+
+```graphql
+mutation DeleteCartItems($cartItemIds: [String]!) {
+  deleteCartItems(cartItemIds: $cartItemIds)
+}
+```
+
+> 결과값
+
+```graphql
+{
+	"data": {
+		"deleteCartItems": "success"
+	}
+}
+```
+
+# 결제 (Payment)
+
+작성중!
+
+## 장바구니 조회 (GetCartView)
+
+테스트 필요!
+
+> Query:
+
+```graphql
+query GetCartView(
+	$language: String!, 
+	$currency: String!,
+	$shippingCountry: String!) {
+  getCartView(
+		currency: $currency,
+		language: $language,
+    shippingCountry: $shippingCountry) {
+		#장바구니 상품 목록
+    currency
+    shippingCountry
+    totalCartPrice
+    cartViewItems {
+      id
+      productThumbnailImageUrl
+      productName
+			quantity
+      stockQuantity
+      sellerName
+			sellerProfileImageUrl
+			listPrice
+			salePrice
+			isDiscountApplied
+			discountRate
+			totalProductPrice
+			isCurrencyAvailable
+			isShippingAvailable
+    }
+  }
+}
+```
+
+> 결과값
+
+```graphql
+{
+	"data": {
+		"getCartView": {
+			"currency": "KRW",
+			"shippingCountry": "KR",
+			"totalCartPrice": 200000,
+			"cartViewItems": [
+				{
+					"id": "3255f15b-52f1-49d7-a139-9851bcde43e9",
+					"productThumbnailImageUrl": "be465a41-d3cd-456e-940a-119760f2f638",
+					"productName": "제품명",
+					"quantity": 2,
+					"stockQuantity": 10,
+					"sellerName": "jmlee",
+					"sellerProfileImageUrl": null,
+					"listPrice": 200000,
+					"salePrice": 100000,
+					"isDiscountApplied": true,
+					"discountRate": 50.0,
+					"totalProductPrice": 200000,
+					"isCurrencyAvailable": true,
+					"isShippingAvailable": true
+				}
+			]
+		}
+	}
+}
+```
+
+### CartView
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+cartViewItems | [CartViewItem] | N | 장바구니 상품
+currency | String | N | 통화 코드
+shippingCountry | String | N | 배송 국가 코드
+totalCartPrice | Int | N | 장바구니 총 금액
+
+### CartViewItem
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+id | String | N | 정가
+productThumbnailImageUrl | String | N | 판매가
+productName | String | N | 통화 코드
+quantity | Int | N | 상품 배송 정보
+stockQuantity | Int | N | 정가
+sellerName | String | N | 판매가
+sellerProfileImageUrl | String | N | 통화 코드
+listPrice | Int | N | 상품 배송 정보
+salePrice | Int | N | 정가
+isDiscountApplied | Boolean | N | 통화 코드
+discountRate | Float | N | 상품 배송 정보
+totalProductPrice | Int | N | 정가
+isCurrencyAvailable | Boolean | N | 판매가
+isShippingAvailable | Boolean | N | 통화 코드
+
+# 주문 (Order)
+
+작성중!
+
+## 장바구니 조회 (GetCartView)
+
+테스트 필요!
+
+> Query:
+
+```graphql
+query GetCartView(
+	$language: String!, 
+	$currency: String!,
+	$shippingCountry: String!) {
+  getCartView(
+		currency: $currency,
+		language: $language,
+    shippingCountry: $shippingCountry) {
+		#장바구니 상품 목록
+    currency
+    shippingCountry
+    totalCartPrice
+    cartViewItems {
+      id
+      productThumbnailImageUrl
+      productName
+			quantity
+      stockQuantity
+      sellerName
+			sellerProfileImageUrl
+			listPrice
+			salePrice
+			isDiscountApplied
+			discountRate
+			totalProductPrice
+			isCurrencyAvailable
+			isShippingAvailable
+    }
+  }
+}
+```
+
+> 결과값
+
+```graphql
+{
+	"data": {
+		"getCartView": {
+			"currency": "KRW",
+			"shippingCountry": "KR",
+			"totalCartPrice": 200000,
+			"cartViewItems": [
+				{
+					"id": "3255f15b-52f1-49d7-a139-9851bcde43e9",
+					"productThumbnailImageUrl": "be465a41-d3cd-456e-940a-119760f2f638",
+					"productName": "제품명",
+					"quantity": 2,
+					"stockQuantity": 10,
+					"sellerName": "jmlee",
+					"sellerProfileImageUrl": null,
+					"listPrice": 200000,
+					"salePrice": 100000,
+					"isDiscountApplied": true,
+					"discountRate": 50.0,
+					"totalProductPrice": 200000,
+					"isCurrencyAvailable": true,
+					"isShippingAvailable": true
+				}
+			]
+		}
+	}
+}
+```
+
+### CartView
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+cartViewItems | [CartViewItem] | N | 장바구니 상품
+currency | String | N | 통화 코드
+shippingCountry | String | N | 배송 국가 코드
+totalCartPrice | Int | N | 장바구니 총 금액
+
+### CartViewItem
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+id | String | N | 정가
+productThumbnailImageUrl | String | N | 판매가
+productName | String | N | 통화 코드
+quantity | Int | N | 상품 배송 정보
+stockQuantity | Int | N | 정가
+sellerName | String | N | 판매가
+sellerProfileImageUrl | String | N | 통화 코드
+listPrice | Int | N | 상품 배송 정보
+salePrice | Int | N | 정가
+isDiscountApplied | Boolean | N | 통화 코드
+discountRate | Float | N | 상품 배송 정보
+totalProductPrice | Int | N | 정가
+isCurrencyAvailable | Boolean | N | 판매가
+isShippingAvailable | Boolean | N | 통화 코드
