@@ -419,6 +419,9 @@
                     <a href="#getsimplerecommendedproductsbycursor" class="toc-h2 toc-link" data-title="임시 상품 추천 (GetSimpleRecommendedProductsByCursor)">임시 상품 추천 (GetSimpleRecommendedProductsByCursor)</a>
                   </li>
                   <li>
+                    <a href="#searchproducts" class="toc-h2 toc-link" data-title="상품 검색 (SearchProducts)">상품 검색 (SearchProducts)</a>
+                  </li>
+                  <li>
                     <a href="#getproductview" class="toc-h2 toc-link" data-title="상품 목록 단건 조회 (GetProductView)">상품 목록 단건 조회 (GetProductView)</a>
                   </li>
                   <li>
@@ -448,7 +451,35 @@
             <a href="#cart" class="toc-h1 toc-link" data-title="장바구니 (Cart)">장바구니 (Cart)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#resetpassword-2" class="toc-h2 toc-link" data-title="비밀번호 초기화 (ResetPassword)">비밀번호 초기화 (ResetPassword)</a>
+                    <a href="#getcartview" class="toc-h2 toc-link" data-title="장바구니 조회 (GetCartView)">장바구니 조회 (GetCartView)</a>
+                  </li>
+                  <li>
+                    <a href="#additemtocart" class="toc-h2 toc-link" data-title="장바구니 상품 추가 (AddItemToCart)">장바구니 상품 추가 (AddItemToCart)</a>
+                  </li>
+                  <li>
+                    <a href="#setcartitemquantity" class="toc-h2 toc-link" data-title="장바구니 상품 수량 변경 (SetCartItemQuantity)">장바구니 상품 수량 변경 (SetCartItemQuantity)</a>
+                  </li>
+                  <li>
+                    <a href="#deletecartitem" class="toc-h2 toc-link" data-title="장바구니 상품 삭제 (DeleteCartItem)">장바구니 상품 삭제 (DeleteCartItem)</a>
+                  </li>
+                  <li>
+                    <a href="#deletecartitems" class="toc-h2 toc-link" data-title="장바구니 상품 다수 삭제 (DeleteCartItems)">장바구니 상품 다수 삭제 (DeleteCartItems)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#payment" class="toc-h1 toc-link" data-title="결제 (Payment)">결제 (Payment)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getcartview-2" class="toc-h2 toc-link" data-title="장바구니 조회 (GetCartView)">장바구니 조회 (GetCartView)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#order" class="toc-h1 toc-link" data-title="주문 (Order)">주문 (Order)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getcartview-3" class="toc-h2 toc-link" data-title="장바구니 조회 (GetCartView)">장바구니 조회 (GetCartView)</a>
                   </li>
               </ul>
           </li>
@@ -1600,6 +1631,106 @@
         </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='searchproducts'>상품 검색 (SearchProducts)</h2>
+<p>오류 수정 필요! 기능 완성/구현 필요!</p>
+
+<blockquote>
+<p>Query:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">SearchProducts</span><span class="p">(</span><span class="w">
+    </span><span class="nv">$shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
+    </span><span class="nv">$currency</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w">
+    </span><span class="nv">$searchString</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
+    </span><span class="nv">$minPrice</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> 
+    </span><span class="nv">$maxPrice</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">,</span><span class="w"> 
+    </span><span class="nv">$pageNumber</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">searchProducts</span><span class="p">(</span><span class="w">
+        </span><span class="n">shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nv">$shippingCountry</span><span class="p">,</span><span class="w">
+    </span><span class="n">currency</span><span class="p">:</span><span class="w"> </span><span class="nv">$currency</span><span class="p">,</span><span class="w">
+    </span><span class="n">searchString</span><span class="p">:</span><span class="w"> </span><span class="nv">$searchString</span><span class="p">,</span><span class="w">
+    </span><span class="n">minPrice</span><span class="p">:</span><span class="w"> </span><span class="nv">$minPrice</span><span class="p">,</span><span class="w">
+    </span><span class="n">maxPrice</span><span class="p">:</span><span class="w"> </span><span class="nv">$maxPrice</span><span class="p">,</span><span class="w">
+    </span><span class="n">pageNumber</span><span class="p">:</span><span class="w"> </span><span class="nv">$pageNumber</span><span class="w">
+  </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">id</span><span class="w">
+            </span><span class="n">name</span><span class="w">
+            </span><span class="n">listPrice</span><span class="w">
+            </span><span class="n">salePrice</span><span class="w">
+            </span><span class="n">isDiscountApplied</span><span class="w">
+            </span><span class="n">discountRate</span><span class="w">
+            </span><span class="n">currency</span><span class="w">
+            </span><span class="n">shippingCountries</span><span class="w">
+            </span><span class="n">stockQuantity</span><span class="w">
+            </span><span class="n">thumbnailImageUrl</span><span class="w">
+            </span><span class="n">representativeImageUrl</span><span class="w">
+            </span><span class="n">additionalImageUrls</span><span class="w">
+            </span><span class="n">descriptionHtml</span><span class="w">
+            </span><span class="n">isOnSale</span><span class="w">
+            </span><span class="n">isAdultProduct</span><span class="w">
+            </span><span class="n">isDeliveryBundled</span><span class="w">
+            </span><span class="n">licenseThumbnailImageUrl</span><span class="w">
+            </span><span class="n">licenseName</span><span class="w">
+            </span><span class="n">sellerBusinessType</span><span class="w">
+            </span><span class="n">sellerCountry</span><span class="w">
+            </span><span class="n">sellerName</span><span class="w">
+            </span><span class="n">sellerProfileImageUrl</span><span class="w">
+            </span><span class="n">tags</span><span class="w">
+            </span><span class="n">numberOfSales</span><span class="w">
+            </span><span class="n">numberOfLikes</span><span class="w">
+            </span><span class="n">averageReviewScore</span><span class="w">
+            </span><span class="n">numberOfReviews</span><span class="w">
+            </span><span class="n">createdDate</span><span class="w">
+            </span><span class="n">modifiedDate</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"searchProducts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"be465a41-d3cd-456e-940a-119760f2f638"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"제품명"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"listPrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"salePrice"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isDiscountApplied"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"discountRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">50.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KRW"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"shippingCountries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"KR"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"stockQuantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"thumbnailImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"representativeImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"additionalImageUrls"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"descriptionHtml"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isOnSale"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isAdultProduct"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"isDeliveryBundled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"licenseThumbnailImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"licenseName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"라이선스"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sellerBusinessType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"INDIVIDUAL"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sellerCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"KR"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sellerName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jmlee"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sellerProfileImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="s2">"tag1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"tag2"</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"numberOfSales"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"numberOfLikes"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"averageReviewScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"numberOfReviews"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"createdDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-31T12:27:25.139665"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"modifiedDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-03-31T14:55:12.584047"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h2 id='getproductview'>상품 목록 단건 조회 (GetProductView)</h2>
 <blockquote>
 <p>Query:</p>
@@ -2099,18 +2230,41 @@
         </span><span class="nl">"uploadProductAdditionalImages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='cart'>장바구니 (Cart)</h1><h2 id='resetpassword-2'>비밀번호 초기화 (ResetPassword)</h2>
+</span></code></pre></div><h1 id='cart'>장바구니 (Cart)</h1><h2 id='getcartview'>장바구니 조회 (GetCartView)</h2>
 <p>테스트 필요!</p>
 
 <blockquote>
-<p>Mutation:</p>
+<p>Query:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">ResetPassword</span><span class="p">(</span><span class="nv">$email</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> </span><span class="nv">$passwordResetCode</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
-    </span><span class="nv">$newPassword</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-
-    </span><span class="n">resetPassword</span><span class="p">(</span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="nv">$email</span><span class="p">,</span><span class="w"> 
-        </span><span class="n">passwordResetCode</span><span class="p">:</span><span class="w"> </span><span class="nv">$passwordResetCode</span><span class="p">,</span><span class="w"> 
-        </span><span class="n">newPassword</span><span class="p">:</span><span class="w"> </span><span class="nv">$newPassword</span><span class="p">)</span><span class="w">
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">GetCartView</span><span class="p">(</span><span class="w">
+    </span><span class="nv">$language</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
+    </span><span class="nv">$currency</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w">
+    </span><span class="nv">$shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">getCartView</span><span class="p">(</span><span class="w">
+        </span><span class="n">currency</span><span class="p">:</span><span class="w"> </span><span class="nv">$currency</span><span class="p">,</span><span class="w">
+        </span><span class="n">language</span><span class="p">:</span><span class="w"> </span><span class="nv">$language</span><span class="p">,</span><span class="w">
+    </span><span class="n">shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nv">$shippingCountry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c">#장바구니 상품 목록</span><span class="w">
+    </span><span class="n">currency</span><span class="w">
+    </span><span class="n">shippingCountry</span><span class="w">
+    </span><span class="n">totalCartPrice</span><span class="w">
+    </span><span class="n">cartViewItems</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">productThumbnailImageUrl</span><span class="w">
+      </span><span class="n">productName</span><span class="w">
+            </span><span class="n">quantity</span><span class="w">
+      </span><span class="n">stockQuantity</span><span class="w">
+      </span><span class="n">sellerName</span><span class="w">
+            </span><span class="n">sellerProfileImageUrl</span><span class="w">
+            </span><span class="n">listPrice</span><span class="w">
+            </span><span class="n">salePrice</span><span class="w">
+            </span><span class="n">isDiscountApplied</span><span class="w">
+            </span><span class="n">discountRate</span><span class="w">
+            </span><span class="n">totalProductPrice</span><span class="w">
+            </span><span class="n">isCurrencyAvailable</span><span class="w">
+            </span><span class="n">isShippingAvailable</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -2118,10 +2272,770 @@
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
     </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">"</span><span class="n">resetPassword</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
+        </span><span class="err">"</span><span class="n">getCartView</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="err">"</span><span class="n">currency</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">KRW</span><span class="err">"</span><span class="p">,</span><span class="w">
+            </span><span class="err">"</span><span class="n">shippingCountry</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">KR</span><span class="err">"</span><span class="p">,</span><span class="w">
+            </span><span class="err">"</span><span class="n">totalCartPrice</span><span class="err">":</span><span class="w"> </span><span class="err">200000</span><span class="p">,</span><span class="w">
+            </span><span class="err">"</span><span class="n">cartViewItems</span><span class="err">":</span><span class="w"> </span><span class="err">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"3255</span><span class="n">f15b</span><span class="err">-52</span><span class="n">f1</span><span class="err">-49</span><span class="n">d7</span><span class="err">-</span><span class="n">a139</span><span class="err">-9851</span><span class="n">bcde43e9</span><span class="err">"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">productThumbnailImageUrl</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">be465a41</span><span class="err">-</span><span class="n">d3cd</span><span class="err">-456</span><span class="n">e</span><span class="err">-940</span><span class="n">a</span><span class="err">-119760</span><span class="n">f2f638</span><span class="err">"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">productName</span><span class="err">":</span><span class="w"> </span><span class="err">"제품명"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">quantity</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">stockQuantity</span><span class="err">":</span><span class="w"> </span><span class="err">10</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">sellerName</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">jmlee</span><span class="err">"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">sellerProfileImageUrl</span><span class="err">":</span><span class="w"> </span><span class="n">null</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">listPrice</span><span class="err">":</span><span class="w"> </span><span class="err">200000</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">salePrice</span><span class="err">":</span><span class="w"> </span><span class="err">100000</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">isDiscountApplied</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">discountRate</span><span class="err">":</span><span class="w"> </span><span class="err">50.0</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">totalProductPrice</span><span class="err">":</span><span class="w"> </span><span class="err">200000</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">isCurrencyAvailable</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">isShippingAvailable</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="err">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h1 id='errors'>Errors</h1>
+</span></code></pre></div><h3 id='cartview'>CartView</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cartViewItems</td>
+<td>[CartViewItem]</td>
+<td>N</td>
+<td>장바구니 상품</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>shippingCountry</td>
+<td>String</td>
+<td>N</td>
+<td>배송 국가 코드</td>
+</tr>
+<tr>
+<td>totalCartPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>장바구니 총 금액</td>
+</tr>
+</tbody></table>
+<h3 id='cartviewitem'>CartViewItem</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>productThumbnailImageUrl</td>
+<td>String</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>productName</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Int</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>stockQuantity</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>sellerName</td>
+<td>String</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>sellerProfileImageUrl</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>listPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>salePrice</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>isDiscountApplied</td>
+<td>Boolean</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>discountRate</td>
+<td>Float</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>totalProductPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>isCurrencyAvailable</td>
+<td>Boolean</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>isShippingAvailable</td>
+<td>Boolean</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+</tbody></table>
+<h2 id='additemtocart'>장바구니 상품 추가 (AddItemToCart)</h2>
+<p>테스트 필요!</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">AddItemToCart</span><span class="p">(</span><span class="w">
+    </span><span class="nv">$shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
+    </span><span class="nv">$currency</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w">
+    </span><span class="nv">$productId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w">
+    </span><span class="nv">$quantity</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">addItemToCart</span><span class="p">(</span><span class="w">
+        </span><span class="n">shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nv">$shippingCountry</span><span class="p">,</span><span class="w">
+    </span><span class="n">currency</span><span class="p">:</span><span class="w"> </span><span class="nv">$currency</span><span class="p">,</span><span class="w">
+    </span><span class="n">productId</span><span class="p">:</span><span class="w"> </span><span class="nv">$productId</span><span class="p">,</span><span class="w">
+    </span><span class="n">quantity</span><span class="p">:</span><span class="w"> </span><span class="nv">$quantity</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">addItemToCart</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='cartview-2'>CartView</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cartViewItems</td>
+<td>[CartViewItem]</td>
+<td>N</td>
+<td>장바구니 상품</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>shippingCountry</td>
+<td>String</td>
+<td>N</td>
+<td>배송 국가 코드</td>
+</tr>
+<tr>
+<td>totalCartPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>장바구니 총 금액</td>
+</tr>
+</tbody></table>
+<h3 id='cartviewitem-2'>CartViewItem</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>productThumbnailImageUrl</td>
+<td>String</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>productName</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Int</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>stockQuantity</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>sellerName</td>
+<td>String</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>sellerProfileImageUrl</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>listPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>salePrice</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>isDiscountApplied</td>
+<td>Boolean</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>discountRate</td>
+<td>Float</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>totalProductPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>isCurrencyAvailable</td>
+<td>Boolean</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>isShippingAvailable</td>
+<td>Boolean</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+</tbody></table>
+<h2 id='setcartitemquantity'>장바구니 상품 수량 변경 (SetCartItemQuantity)</h2>
+<p>테스트 필요!</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">SetCartItemQuantity</span><span class="p">(</span><span class="w">
+    </span><span class="nv">$shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
+    </span><span class="nv">$currency</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w">
+    </span><span class="nv">$cartItemId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
+    </span><span class="nv">$quantity</span><span class="p">:</span><span class="w"> </span><span class="nb">Int</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">setCartItemQuantity</span><span class="p">(</span><span class="w">
+        </span><span class="n">shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nv">$shippingCountry</span><span class="p">,</span><span class="w">
+    </span><span class="n">currency</span><span class="p">:</span><span class="w"> </span><span class="nv">$currency</span><span class="p">,</span><span class="w">
+        </span><span class="n">cartItemId</span><span class="p">:</span><span class="w"> </span><span class="nv">$cartItemId</span><span class="p">,</span><span class="w"> 
+        </span><span class="n">quantity</span><span class="p">:</span><span class="w"> </span><span class="nv">$quantity</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">setCartItemQuantity</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='deletecartitem'>장바구니 상품 삭제 (DeleteCartItem)</h2>
+<p>테스트 필요!</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">DeleteCartItem</span><span class="p">(</span><span class="nv">$cartItemId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deleteCartItem</span><span class="p">(</span><span class="n">cartItemId</span><span class="p">:</span><span class="w"> </span><span class="nv">$cartItemId</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">deleteCartItem</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='deletecartitems'>장바구니 상품 다수 삭제 (DeleteCartItems)</h2>
+<p>테스트 필요!</p>
+
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">DeleteCartItems</span><span class="p">(</span><span class="nv">$cartItemIds</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="nb">String</span><span class="p">]!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deleteCartItems</span><span class="p">(</span><span class="n">cartItemIds</span><span class="p">:</span><span class="w"> </span><span class="nv">$cartItemIds</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">deleteCartItems</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='payment'>결제 (Payment)</h1>
+<p>작성중!</p>
+<h2 id='getcartview-2'>장바구니 조회 (GetCartView)</h2>
+<p>테스트 필요!</p>
+
+<blockquote>
+<p>Query:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">GetCartView</span><span class="p">(</span><span class="w">
+    </span><span class="nv">$language</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
+    </span><span class="nv">$currency</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w">
+    </span><span class="nv">$shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">getCartView</span><span class="p">(</span><span class="w">
+        </span><span class="n">currency</span><span class="p">:</span><span class="w"> </span><span class="nv">$currency</span><span class="p">,</span><span class="w">
+        </span><span class="n">language</span><span class="p">:</span><span class="w"> </span><span class="nv">$language</span><span class="p">,</span><span class="w">
+    </span><span class="n">shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nv">$shippingCountry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c">#장바구니 상품 목록</span><span class="w">
+    </span><span class="n">currency</span><span class="w">
+    </span><span class="n">shippingCountry</span><span class="w">
+    </span><span class="n">totalCartPrice</span><span class="w">
+    </span><span class="n">cartViewItems</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">productThumbnailImageUrl</span><span class="w">
+      </span><span class="n">productName</span><span class="w">
+            </span><span class="n">quantity</span><span class="w">
+      </span><span class="n">stockQuantity</span><span class="w">
+      </span><span class="n">sellerName</span><span class="w">
+            </span><span class="n">sellerProfileImageUrl</span><span class="w">
+            </span><span class="n">listPrice</span><span class="w">
+            </span><span class="n">salePrice</span><span class="w">
+            </span><span class="n">isDiscountApplied</span><span class="w">
+            </span><span class="n">discountRate</span><span class="w">
+            </span><span class="n">totalProductPrice</span><span class="w">
+            </span><span class="n">isCurrencyAvailable</span><span class="w">
+            </span><span class="n">isShippingAvailable</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">getCartView</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="err">"</span><span class="n">currency</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">KRW</span><span class="err">"</span><span class="p">,</span><span class="w">
+            </span><span class="err">"</span><span class="n">shippingCountry</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">KR</span><span class="err">"</span><span class="p">,</span><span class="w">
+            </span><span class="err">"</span><span class="n">totalCartPrice</span><span class="err">":</span><span class="w"> </span><span class="err">200000</span><span class="p">,</span><span class="w">
+            </span><span class="err">"</span><span class="n">cartViewItems</span><span class="err">":</span><span class="w"> </span><span class="err">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"3255</span><span class="n">f15b</span><span class="err">-52</span><span class="n">f1</span><span class="err">-49</span><span class="n">d7</span><span class="err">-</span><span class="n">a139</span><span class="err">-9851</span><span class="n">bcde43e9</span><span class="err">"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">productThumbnailImageUrl</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">be465a41</span><span class="err">-</span><span class="n">d3cd</span><span class="err">-456</span><span class="n">e</span><span class="err">-940</span><span class="n">a</span><span class="err">-119760</span><span class="n">f2f638</span><span class="err">"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">productName</span><span class="err">":</span><span class="w"> </span><span class="err">"제품명"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">quantity</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">stockQuantity</span><span class="err">":</span><span class="w"> </span><span class="err">10</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">sellerName</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">jmlee</span><span class="err">"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">sellerProfileImageUrl</span><span class="err">":</span><span class="w"> </span><span class="n">null</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">listPrice</span><span class="err">":</span><span class="w"> </span><span class="err">200000</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">salePrice</span><span class="err">":</span><span class="w"> </span><span class="err">100000</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">isDiscountApplied</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">discountRate</span><span class="err">":</span><span class="w"> </span><span class="err">50.0</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">totalProductPrice</span><span class="err">":</span><span class="w"> </span><span class="err">200000</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">isCurrencyAvailable</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">isShippingAvailable</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="err">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='cartview-3'>CartView</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cartViewItems</td>
+<td>[CartViewItem]</td>
+<td>N</td>
+<td>장바구니 상품</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>shippingCountry</td>
+<td>String</td>
+<td>N</td>
+<td>배송 국가 코드</td>
+</tr>
+<tr>
+<td>totalCartPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>장바구니 총 금액</td>
+</tr>
+</tbody></table>
+<h3 id='cartviewitem-3'>CartViewItem</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>productThumbnailImageUrl</td>
+<td>String</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>productName</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Int</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>stockQuantity</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>sellerName</td>
+<td>String</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>sellerProfileImageUrl</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>listPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>salePrice</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>isDiscountApplied</td>
+<td>Boolean</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>discountRate</td>
+<td>Float</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>totalProductPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>isCurrencyAvailable</td>
+<td>Boolean</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>isShippingAvailable</td>
+<td>Boolean</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+</tbody></table>
+<h1 id='order'>주문 (Order)</h1>
+<p>작성중!</p>
+<h2 id='getcartview-3'>장바구니 조회 (GetCartView)</h2>
+<p>테스트 필요!</p>
+
+<blockquote>
+<p>Query:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">GetCartView</span><span class="p">(</span><span class="w">
+    </span><span class="nv">$language</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
+    </span><span class="nv">$currency</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w">
+    </span><span class="nv">$shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">getCartView</span><span class="p">(</span><span class="w">
+        </span><span class="n">currency</span><span class="p">:</span><span class="w"> </span><span class="nv">$currency</span><span class="p">,</span><span class="w">
+        </span><span class="n">language</span><span class="p">:</span><span class="w"> </span><span class="nv">$language</span><span class="p">,</span><span class="w">
+    </span><span class="n">shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nv">$shippingCountry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="c">#장바구니 상품 목록</span><span class="w">
+    </span><span class="n">currency</span><span class="w">
+    </span><span class="n">shippingCountry</span><span class="w">
+    </span><span class="n">totalCartPrice</span><span class="w">
+    </span><span class="n">cartViewItems</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">id</span><span class="w">
+      </span><span class="n">productThumbnailImageUrl</span><span class="w">
+      </span><span class="n">productName</span><span class="w">
+            </span><span class="n">quantity</span><span class="w">
+      </span><span class="n">stockQuantity</span><span class="w">
+      </span><span class="n">sellerName</span><span class="w">
+            </span><span class="n">sellerProfileImageUrl</span><span class="w">
+            </span><span class="n">listPrice</span><span class="w">
+            </span><span class="n">salePrice</span><span class="w">
+            </span><span class="n">isDiscountApplied</span><span class="w">
+            </span><span class="n">discountRate</span><span class="w">
+            </span><span class="n">totalProductPrice</span><span class="w">
+            </span><span class="n">isCurrencyAvailable</span><span class="w">
+            </span><span class="n">isShippingAvailable</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="p">{</span><span class="w">
+    </span><span class="err">"</span><span class="n">data</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">"</span><span class="n">getCartView</span><span class="err">":</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="err">"</span><span class="n">currency</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">KRW</span><span class="err">"</span><span class="p">,</span><span class="w">
+            </span><span class="err">"</span><span class="n">shippingCountry</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">KR</span><span class="err">"</span><span class="p">,</span><span class="w">
+            </span><span class="err">"</span><span class="n">totalCartPrice</span><span class="err">":</span><span class="w"> </span><span class="err">200000</span><span class="p">,</span><span class="w">
+            </span><span class="err">"</span><span class="n">cartViewItems</span><span class="err">":</span><span class="w"> </span><span class="err">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="err">"</span><span class="n">id</span><span class="err">":</span><span class="w"> </span><span class="err">"3255</span><span class="n">f15b</span><span class="err">-52</span><span class="n">f1</span><span class="err">-49</span><span class="n">d7</span><span class="err">-</span><span class="n">a139</span><span class="err">-9851</span><span class="n">bcde43e9</span><span class="err">"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">productThumbnailImageUrl</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">be465a41</span><span class="err">-</span><span class="n">d3cd</span><span class="err">-456</span><span class="n">e</span><span class="err">-940</span><span class="n">a</span><span class="err">-119760</span><span class="n">f2f638</span><span class="err">"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">productName</span><span class="err">":</span><span class="w"> </span><span class="err">"제품명"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">quantity</span><span class="err">":</span><span class="w"> </span><span class="err">2</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">stockQuantity</span><span class="err">":</span><span class="w"> </span><span class="err">10</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">sellerName</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">jmlee</span><span class="err">"</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">sellerProfileImageUrl</span><span class="err">":</span><span class="w"> </span><span class="n">null</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">listPrice</span><span class="err">":</span><span class="w"> </span><span class="err">200000</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">salePrice</span><span class="err">":</span><span class="w"> </span><span class="err">100000</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">isDiscountApplied</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">discountRate</span><span class="err">":</span><span class="w"> </span><span class="err">50.0</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">totalProductPrice</span><span class="err">":</span><span class="w"> </span><span class="err">200000</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">isCurrencyAvailable</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="p">,</span><span class="w">
+                    </span><span class="err">"</span><span class="n">isShippingAvailable</span><span class="err">":</span><span class="w"> </span><span class="n">true</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="err">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='cartview-4'>CartView</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>cartViewItems</td>
+<td>[CartViewItem]</td>
+<td>N</td>
+<td>장바구니 상품</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>shippingCountry</td>
+<td>String</td>
+<td>N</td>
+<td>배송 국가 코드</td>
+</tr>
+<tr>
+<td>totalCartPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>장바구니 총 금액</td>
+</tr>
+</tbody></table>
+<h3 id='cartviewitem-4'>CartViewItem</h3>
+<table><thead>
+<tr>
+<th>변수명</th>
+<th>자료형</th>
+<th>필수 여부</th>
+<th>설명</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>String</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>productThumbnailImageUrl</td>
+<td>String</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>productName</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>quantity</td>
+<td>Int</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>stockQuantity</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>sellerName</td>
+<td>String</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>sellerProfileImageUrl</td>
+<td>String</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>listPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>salePrice</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>isDiscountApplied</td>
+<td>Boolean</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+<tr>
+<td>discountRate</td>
+<td>Float</td>
+<td>N</td>
+<td>상품 배송 정보</td>
+</tr>
+<tr>
+<td>totalProductPrice</td>
+<td>Int</td>
+<td>N</td>
+<td>정가</td>
+</tr>
+<tr>
+<td>isCurrencyAvailable</td>
+<td>Boolean</td>
+<td>N</td>
+<td>판매가</td>
+</tr>
+<tr>
+<td>isShippingAvailable</td>
+<td>Boolean</td>
+<td>N</td>
+<td>통화 코드</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
 <aside class="notice">
 This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
 </aside>
