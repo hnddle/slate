@@ -669,6 +669,52 @@ mutation DeleteLicense($licenseId: String!, $license: LicenseInput!) {
 }
 ```
 
+## 라이선스 설명 에디터 이미지 업로드 (UploadLicenseHtmlImage)
+
+> Mutation:
+
+```graphql
+mutation UploadLicenseHtmlImage($image: Upload!) {
+  uploadLicenseHtmlImage(image: $image)
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"uploadLicenseHtmlImage": "success"
+	}
+}
+```
+
+## 라이선스 대표 이미지 업로드 (UploadLicenseRepresentativeImage)
+
+> Mutation:
+
+```graphql
+mutation UploadLicenseRepresentativeImage($image: Upload!) {
+  uploadLicenseRepresentativeImage(image: $image) {
+	representativeImageUrl
+	thumbnailImageUrl
+  }
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"uploadLicenseRepresentativeImage": {
+			"representativeImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+			"thumbnailImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"
+		}
+	}
+}
+```
+
 # 판매자 (Seller)
 
 ## 판매자 가입/등록 (RegisterSeller)
@@ -1020,6 +1066,112 @@ productDeliveryInputs | [ProductDeliveryInput] | Y | 상품 배송 정보
 countryCode | String | Y | 국가 코드
 shippingFee | Int | Y | 배송비
 deliveryLeadTime | String | Y | 배송 소요 시간
+
+## 상품 삭제 (DeleteProduct)
+
+> Mutation:
+
+```graphql
+mutation DeleteProduct($productId: String!) {
+  deleteProduct(productId: $productId)
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"deleteProduct": "success"
+	}
+}
+```
+
+## 상품 설명 에디터 이미지 업로드 (UploadProductHtmlImage)
+
+> Mutation:
+
+```graphql
+mutation UploadProductHtmlImage($image: Upload!) {
+  uploadProductHtmlImage(image: $image)
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"uploadProductHtmlImage": "success"
+	}
+}
+```
+
+## 상품 대표 이미지 업로드 (UploadProductRepresentativeImage)
+
+> Mutation:
+
+```graphql
+mutation UploadProductRepresentativeImage($image: Upload!) {
+  uploadProductRepresentativeImage(image: $image) {
+	representativeImageUrl
+	thumbnailImageUrl
+  }
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"uploadProductRepresentativeImage": {
+			"representativeImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+			"thumbnailImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"
+		}
+	}
+}
+```
+
+## 상품 추가 이미지 업로드 (UploadProductAdditionalImage)
+
+> Mutation:
+
+```graphql
+mutation UploadProductAdditionalImage($image: Upload!) {
+  uploadProductAdditionalImage(image: $image)
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"uploadProductAdditionalImage": "success"
+	}
+}
+```
+
+## 상품 추가 이미지 여러건 업로드 (UploadProductAdditionalImages)
+
+> Mutation:
+
+```graphql
+mutation UploadProductAdditionalImages($images: [Upload!]!) {
+  uploadProductAdditionalImages(images: $images)
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"uploadProductAdditionalImages": "success"
+	}
+}
+```
 
 # 장바구니 (Cart)
 
