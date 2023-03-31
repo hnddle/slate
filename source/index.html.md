@@ -591,25 +591,87 @@ mutation RegisterLicense($license: LicenseInput!) {
 }
 ```
 
-### ProductInput
+### LicenseInput
 
 변수명 | 자료형 | 필수 여부 | 설명
 --------- | ------- | ----------- | ----------
-recipientName | Boolean | Y | 수령인 이름
-countryCode | String | Y | 국가 코드
-address1 | String | Y | 주소1
-address2 | String | Y | 주소2
-postalCode | String | N | 한국 (postalCode)
-city | String | N | 미국, 영국 (city)
-county | String | N | 영국 (county)
-postCode | String | N | 영국 (postCode)
-state | String | N | 미국 (state)
-zipCode | String | N | 미국 (zipCode)
+isEnabled | Boolean | Y | 활성화 여부
+isApprovalRequired | String | N | 승인 필요 여부 (미사용)
+allowedBusinessTypes | [String] | N | 허용 사업 형태 (미사용)
+representativeImageUrl | String | Y | 대표 이미지 url
+thumbnailImageUrl | String | Y | 썸네일 이미지 url
+minimumGuarantee | Int | N | 라이선스 MG 수수료 (미사용)
+runningGuaranteeRate | Int | Y | 라이선스 RG 수수료
+name | String | Y | 라이선스명
+shortDescription | String | Y | 짧은 설명글
+tags | [String] | N | 태그
+descriptionHtml | String | Y | 설명 html
+guideLine | String | N | 라이선스 가이드라인
+endPeriod | DateTime | N | 라이선스 종료일 (무기한 == NULL)
 
+## 라이선스 수정 (updateLicense)
+
+> Mutation:
+
+```graphql
+mutation UpdateLicense($licenseId: String!, $license: LicenseInput!) {
+  updateLicense(licenseId: $licenseId, license: $license)
+}
+```
+
+> 결과값
+
+```graphql
+{
+	"data": {
+		"updateLicense": "success"
+	}
+}
+```
+
+### LicenseInput
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+isEnabled | Boolean | Y | 활성화 여부
+isApprovalRequired | String | N | 승인 필요 여부 (미사용)
+allowedBusinessTypes | [String] | N | 허용 사업 형태 (미사용)
+representativeImageUrl | String | Y | 대표 이미지 url
+thumbnailImageUrl | String | Y | 썸네일 이미지 url
+minimumGuarantee | Int | N | 라이선스 MG 수수료 (미사용)
+runningGuaranteeRate | Int | Y | 라이선스 RG 수수료
+name | String | Y | 라이선스명
+shortDescription | String | Y | 짧은 설명글
+tags | [String] | N | 태그
+descriptionHtml | String | Y | 설명 html
+guideLine | String | N | 라이선스 가이드라인
+endPeriod | DateTime | N | 라이선스 종료일 (무기한 == NULL)
+
+## 라이선스 삭제 (deleteLicense)
+
+상품 판매 정지 개발 필요 (사유까지)
+
+> Mutation:
+
+```graphql
+mutation DeleteLicense($licenseId: String!, $license: LicenseInput!) {
+  deleteLicense(licenseId: $licenseId, license: $license)
+}
+```
+
+> 결과값
+
+```graphql
+{
+	"data": {
+		"deleteLicense": "success"
+	}
+}
+```
 
 # 판매자 (Seller)
 
-## 판매자 등록 (RegisterSeller)
+## 판매자 가입/등록 (RegisterSeller)
 
 > Mutation:
 
@@ -628,6 +690,14 @@ mutation RegisterSeller($sellerName: String!) {
 	}
 }
 ```
+
+### SellerInput
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+country | String | Y | 국가코드
+businessType | String | Y | 사업 종류
+
 
 ## 판매자 탈퇴 (DeleteSeller)
 
@@ -653,12 +723,105 @@ mutation DeleteSeller {
 
 # 상품 (Product)
 
-## 상품 조회 (GetProductView)
+## 임시 상품 추천 (GetSimpleRecommendedProductsByCursor)
 
 > Query:
 
 ```graphql
-query GetProduct(
+query GetSimpleRecommendedProductsByCursor(
+	$currency: String!, 
+	$shippingCountry: String!) {
+  getSimpleRecommendedProductsByCursor(
+		currency: $currency,
+		shippingCountry: $shippingCountry) {
+			id
+			name
+			listPrice
+			salePrice
+			isDiscountApplied
+			discountRate
+			currency
+			shippingCountries
+			stockQuantity
+			thumbnailImageUrl
+			representativeImageUrl
+			additionalImageUrls
+			descriptionHtml
+			isOnSale
+			isAdultProduct
+			isDeliveryBundled
+			licenseThumbnailImageUrl
+			licenseName
+			sellerBusinessType
+			sellerCountry
+			sellerName
+			sellerProfileImageUrl
+			tags
+			numberOfSales
+			numberOfLikes
+			averageReviewScore
+			numberOfReviews
+			createdDate
+			modifiedDate
+		}
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"getSimpleRecommendedProductsByCursor": [
+			{
+				"id": "be465a41-d3cd-456e-940a-119760f2f638",
+				"name": "제품명",
+				"listPrice": 200000,
+				"salePrice": 100000,
+				"isDiscountApplied": true,
+				"discountRate": 50.0,
+				"currency": "KRW",
+				"shippingCountries": [
+					"KR"
+				],
+				"stockQuantity": 10,
+				"thumbnailImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+				"representativeImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+				"additionalImageUrls": [
+					"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"
+				],
+				"descriptionHtml": "",
+				"isOnSale": false,
+				"isAdultProduct": false,
+				"isDeliveryBundled": true,
+				"licenseThumbnailImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+				"licenseName": "라이선스",
+				"sellerBusinessType": "INDIVIDUAL",
+				"sellerCountry": "KR",
+				"sellerName": "jmlee",
+				"sellerProfileImageUrl": null,
+				"tags": [
+					"tag1",
+					"tag2"
+				],
+				"numberOfSales": 0,
+				"numberOfLikes": 0,
+				"averageReviewScore": 0.0,
+				"numberOfReviews": 0,
+				"createdDate": "2023-03-31T12:27:25.139665",
+				"modifiedDate": "2023-03-31T12:27:25.164689"
+			}
+		]
+	}
+}
+```
+
+## 상품 목록 단건 조회 (GetProductView)
+
+> Query:
+
+```graphql
+query GetProductView(
 	$currency: String!, 
 	$shippingCountry: String!,
 	$productId: String!) {
@@ -693,15 +856,9 @@ query GetProduct(
 			numberOfLikes
 			averageReviewScore
 			numberOfReviews
-			productDeliveries{
-				countryCode
-				shippingFee
-				deliveryLeadTime
-			}
 			createdDate
 			modifiedDate
 		}
-
 }
 ```
 
@@ -710,30 +867,51 @@ query GetProduct(
 ```json
 {
 	"data": {
-		"getMyInfo": {
-			"id": "6595f665-c21d-48ae-912f-562a5080fbf2",
-			"isVerified": true,
-			"email": "jmlee@voiij.co.kr",
-			"name": "jmlee",
-			"profileImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
-			"Addresses": [
-				{
-				"isDefaultAddress": true,
-                "address1": "서울 강서구 강서로37길 77",
-                "address2": "지명아트빌라 201호",
-                "postalCode": "07710",
-                "countryCode": "KR",
-                }
+		"getProductView": {
+			"id": "be465a41-d3cd-456e-940a-119760f2f638",
+			"name": "제품명",
+			"listPrice": 200000,
+			"salePrice": 100000,
+			"isDiscountApplied": true,
+			"discountRate": 50.0,
+			"currency": "KRW",
+			"shippingCountries": [
+				"KR"
 			],
-			"isSeller": false
+			"stockQuantity": 10,
+			"thumbnailImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+			"representativeImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+			"additionalImageUrls": [
+				"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"
+			],
+			"descriptionHtml": "",
+			"isOnSale": false,
+			"isAdultProduct": false,
+			"isDeliveryBundled": true,
+			"licenseThumbnailImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+			"licenseName": "라이선스",
+			"sellerBusinessType": "INDIVIDUAL",
+			"sellerCountry": "KR",
+			"sellerName": "jmlee",
+			"sellerProfileImageUrl": null,
+			"tags": [
+				"tag1",
+				"tag2"
+			],
+			"numberOfSales": 0,
+			"numberOfLikes": 0,
+			"averageReviewScore": 0.0,
+			"numberOfReviews": 0,
+			"createdDate": "2023-03-31T12:27:25.139665",
+			"modifiedDate": "2023-03-31T12:27:25.164689"
 		}
 	}
 }
 ```
 
-## 상품 추가 (GetProductView)
+## 상품 추가 (AddProduct)
 
-> Query:
+> Mutation:
 
 ```graphql
 mutation AddProduct(
@@ -752,33 +930,96 @@ mutation AddProduct(
 }
 ```
 
-### User
+### ProductInput
 
 변수명 | 자료형 | 필수 여부 | 설명
 --------- | ------- | ----------- | ----------
-id | String | Y | 사용자 ID
-isVerified | Boolean | Y | 사용자 인증 완료 여부
-email | String | Y | 이메일
-name | String | Y | 이름(닉네임)
-profileImageUrl | String | N | 프로필 사진 url
-Addresses | [Address] | Y | 사용자 배송 주소
-isSeller | String | Y | 판매자 여부
+isOnSale | Boolean | Y | 판매 여부
+isAdultProduct | Boolean | Y | 성인 상품 여부
+isDeliveryBundled | Boolean | Y | 묶음 상품 여부
+stockQuantity | Int | Y | 재고 수량
+name | String | Y | 제품명
+tags | [String] | N | 태그
+representativeImageUrl | String | Y | 대표 이미지 Url
+thumbnailImageUrl | String | Y | 썸네일 이미지 Url
+additionalImageUrls | String | N | 추가 이미지 Url
+descriptionHtml | String | Y | 상품 설명 HTML
+licenseId | String | Y | 사용 라이선스 ID
+productPriceInputs | [ProductPriceInput] | Y | 상품 가격 정보
 
-### Address
+### ProductPriceInput
 
 변수명 | 자료형 | 필수 여부 | 설명
 --------- | ------- | ----------- | ----------
-isDefaultAddress | String | Y | 대표 주소 여부
-recipientName | Boolean | Y | 수령인 이름
+listPrice | Int | Y | 정가
+salePrice | Int | Y | 판매가
+currency | String | Y | 통화 코드
+productDeliveryInputs | [ProductDeliveryInput] | Y | 상품 배송 정보
+
+### ProductDeliveryInput
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
 countryCode | String | Y | 국가 코드
-address1 | String | Y | 주소1
-address2 | String | Y | 주소2
-postalCode | String | N | 한국 (postalCode)
-city | String | N | 미국, 영국 (city)
-county | String | N | 영국 (county)
-postCode | String | N | 영국 (postCode)
-state | String | N | 미국 (state)
-zipCode | String | N | 미국 (zipCode)
+shippingFee | Int | Y | 배송비
+deliveryLeadTime | String | Y | 배송 소요 시간
+
+## 상품 수정 (UpdateProduct)
+
+> Mutation:
+
+```graphql
+mutation UpdateProduct($productId: String!, $product: ProductInput!) {
+  updateProduct(
+		productId: $productId
+    product: $product
+  )
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"updateProduct": "success"
+	}
+}
+```
+
+### ProductInput
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+isOnSale | Boolean | Y | 판매 여부
+isAdultProduct | Boolean | Y | 성인 상품 여부
+isDeliveryBundled | Boolean | Y | 묶음 상품 여부
+stockQuantity | Int | Y | 재고 수량
+name | String | Y | 제품명
+tags | [String] | N | 태그
+representativeImageUrl | String | Y | 대표 이미지 Url
+thumbnailImageUrl | String | Y | 썸네일 이미지 Url
+additionalImageUrls | String | N | 추가 이미지 Url
+descriptionHtml | String | Y | 상품 설명 HTML
+licenseId | String | Y | 사용 라이선스 ID
+productPriceInputs | [ProductPriceInput] | Y | 상품 가격 정보
+
+### ProductPriceInput
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+listPrice | Int | Y | 정가
+salePrice | Int | Y | 판매가
+currency | String | Y | 통화 코드
+productDeliveryInputs | [ProductDeliveryInput] | Y | 상품 배송 정보
+
+### ProductDeliveryInput
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+countryCode | String | Y | 국가 코드
+shippingFee | Int | Y | 배송비
+deliveryLeadTime | String | Y | 배송 소요 시간
 
 # 장바구니 (Cart)
 
