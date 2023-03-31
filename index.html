@@ -393,6 +393,12 @@
                   <li>
                     <a href="#deletelicense" class="toc-h2 toc-link" data-title="라이선스 삭제 (deleteLicense)">라이선스 삭제 (deleteLicense)</a>
                   </li>
+                  <li>
+                    <a href="#uploadlicensehtmlimage" class="toc-h2 toc-link" data-title="라이선스 설명 에디터 이미지 업로드 (UploadLicenseHtmlImage)">라이선스 설명 에디터 이미지 업로드 (UploadLicenseHtmlImage)</a>
+                  </li>
+                  <li>
+                    <a href="#uploadlicenserepresentativeimage" class="toc-h2 toc-link" data-title="라이선스 대표 이미지 업로드 (UploadLicenseRepresentativeImage)">라이선스 대표 이미지 업로드 (UploadLicenseRepresentativeImage)</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -420,6 +426,21 @@
                   </li>
                   <li>
                     <a href="#updateproduct" class="toc-h2 toc-link" data-title="상품 수정 (UpdateProduct)">상품 수정 (UpdateProduct)</a>
+                  </li>
+                  <li>
+                    <a href="#deleteproduct" class="toc-h2 toc-link" data-title="상품 삭제 (DeleteProduct)">상품 삭제 (DeleteProduct)</a>
+                  </li>
+                  <li>
+                    <a href="#uploadproducthtmlimage" class="toc-h2 toc-link" data-title="상품 설명 에디터 이미지 업로드 (UploadProductHtmlImage)">상품 설명 에디터 이미지 업로드 (UploadProductHtmlImage)</a>
+                  </li>
+                  <li>
+                    <a href="#uploadproductrepresentativeimage" class="toc-h2 toc-link" data-title="상품 대표 이미지 업로드 (UploadProductRepresentativeImage)">상품 대표 이미지 업로드 (UploadProductRepresentativeImage)</a>
+                  </li>
+                  <li>
+                    <a href="#uploadproductadditionalimage" class="toc-h2 toc-link" data-title="상품 추가 이미지 업로드 (UploadProductAdditionalImage)">상품 추가 이미지 업로드 (UploadProductAdditionalImage)</a>
+                  </li>
+                  <li>
+                    <a href="#uploadproductadditionalimages" class="toc-h2 toc-link" data-title="상품 추가 이미지 여러건 업로드 (UploadProductAdditionalImages)">상품 추가 이미지 여러건 업로드 (UploadProductAdditionalImages)</a>
                   </li>
               </ul>
           </li>
@@ -1396,6 +1417,44 @@
         </span><span class="err">"</span><span class="n">deleteLicense</span><span class="err">":</span><span class="w"> </span><span class="err">"</span><span class="n">success</span><span class="err">"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='uploadlicensehtmlimage'>라이선스 설명 에디터 이미지 업로드 (UploadLicenseHtmlImage)</h2>
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">UploadLicenseHtmlImage</span><span class="p">(</span><span class="nv">$image</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">uploadLicenseHtmlImage</span><span class="p">(</span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="nv">$image</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"uploadLicenseHtmlImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='uploadlicenserepresentativeimage'>라이선스 대표 이미지 업로드 (UploadLicenseRepresentativeImage)</h2>
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">UploadLicenseRepresentativeImage</span><span class="p">(</span><span class="nv">$image</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">uploadLicenseRepresentativeImage</span><span class="p">(</span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="nv">$image</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">representativeImageUrl</span><span class="w">
+    </span><span class="n">thumbnailImageUrl</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"uploadLicenseRepresentativeImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"representativeImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"thumbnailImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div><h1 id='seller'>판매자 (Seller)</h1><h2 id='registerseller'>판매자 가입/등록 (RegisterSeller)</h2>
 <blockquote>
 <p>Mutation:</p>
@@ -1954,7 +2013,93 @@
 <td>배송 소요 시간</td>
 </tr>
 </tbody></table>
-<h1 id='cart'>장바구니 (Cart)</h1><h2 id='resetpassword-2'>비밀번호 초기화 (ResetPassword)</h2>
+<h2 id='deleteproduct'>상품 삭제 (DeleteProduct)</h2>
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">DeleteProduct</span><span class="p">(</span><span class="nv">$productId</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">deleteProduct</span><span class="p">(</span><span class="n">productId</span><span class="p">:</span><span class="w"> </span><span class="nv">$productId</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"deleteProduct"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='uploadproducthtmlimage'>상품 설명 에디터 이미지 업로드 (UploadProductHtmlImage)</h2>
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">UploadProductHtmlImage</span><span class="p">(</span><span class="nv">$image</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">uploadProductHtmlImage</span><span class="p">(</span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="nv">$image</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"uploadProductHtmlImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='uploadproductrepresentativeimage'>상품 대표 이미지 업로드 (UploadProductRepresentativeImage)</h2>
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">UploadProductRepresentativeImage</span><span class="p">(</span><span class="nv">$image</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">uploadProductRepresentativeImage</span><span class="p">(</span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="nv">$image</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">representativeImageUrl</span><span class="w">
+    </span><span class="n">thumbnailImageUrl</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"uploadProductRepresentativeImage"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"representativeImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"thumbnailImageUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='uploadproductadditionalimage'>상품 추가 이미지 업로드 (UploadProductAdditionalImage)</h2>
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">UploadProductAdditionalImage</span><span class="p">(</span><span class="nv">$image</span><span class="p">:</span><span class="w"> </span><span class="n">Upload</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">uploadProductAdditionalImage</span><span class="p">(</span><span class="n">image</span><span class="p">:</span><span class="w"> </span><span class="nv">$image</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"uploadProductAdditionalImage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='uploadproductadditionalimages'>상품 추가 이미지 여러건 업로드 (UploadProductAdditionalImages)</h2>
+<blockquote>
+<p>Mutation:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">UploadProductAdditionalImages</span><span class="p">(</span><span class="nv">$images</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="n">Upload</span><span class="p">!]!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">uploadProductAdditionalImages</span><span class="p">(</span><span class="n">images</span><span class="p">:</span><span class="w"> </span><span class="nv">$images</span><span class="p">)</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<blockquote>
+<p>결과값</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"uploadProductAdditionalImages"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h1 id='cart'>장바구니 (Cart)</h1><h2 id='resetpassword-2'>비밀번호 초기화 (ResetPassword)</h2>
 <p>테스트 필요!</p>
 
 <blockquote>
