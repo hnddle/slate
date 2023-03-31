@@ -569,6 +569,44 @@ mutation ResetPassword($email: String!, $passwordResetCode: String!,
 }
 ```
 
+# 라이선스
+
+## 라이선스 등록 (registerLicense)
+
+> Mutation:
+
+```graphql
+mutation RegisterLicense($license: LicenseInput!) {
+  registerLicense(license: $license)
+}
+```
+
+> 결과값
+
+```graphql
+{
+	"data": {
+		"registerLicense": "success"
+	}
+}
+```
+
+### ProductInput
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+recipientName | Boolean | Y | 수령인 이름
+countryCode | String | Y | 국가 코드
+address1 | String | Y | 주소1
+address2 | String | Y | 주소2
+postalCode | String | N | 한국 (postalCode)
+city | String | N | 미국, 영국 (city)
+county | String | N | 영국 (county)
+postCode | String | N | 영국 (postCode)
+state | String | N | 미국 (state)
+zipCode | String | N | 미국 (zipCode)
+
+
 # 판매자 (Seller)
 
 ## 판매자 등록 (RegisterSeller)
@@ -591,7 +629,7 @@ mutation RegisterSeller($sellerName: String!) {
 }
 ```
 
-## 판매자 등록 (DeleteSeller)
+## 판매자 탈퇴 (DeleteSeller)
 
 현재 에러! 기능 수정 필요 (체크해야할 데이터가 많기 때문)
 
@@ -612,6 +650,135 @@ mutation DeleteSeller {
 	}
 }
 ```
+
+# 상품 (Product)
+
+## 상품 조회 (GetProductView)
+
+> Query:
+
+```graphql
+query GetProduct(
+	$currency: String!, 
+	$shippingCountry: String!,
+	$productId: String!) {
+  getProductView(
+    currency: $currency,
+		shippingCountry: $shippingCountry,
+		productId: $productId) {
+			id
+			name
+			listPrice
+			salePrice
+			isDiscountApplied
+			discountRate
+			currency
+			shippingCountries
+			stockQuantity
+			thumbnailImageUrl
+			representativeImageUrl
+			additionalImageUrls
+			descriptionHtml
+			isOnSale
+			isAdultProduct
+			isDeliveryBundled
+			licenseThumbnailImageUrl
+			licenseName
+			sellerBusinessType
+			sellerCountry
+			sellerName
+			sellerProfileImageUrl
+			tags
+			numberOfSales
+			numberOfLikes
+			averageReviewScore
+			numberOfReviews
+			productDeliveries{
+				countryCode
+				shippingFee
+				deliveryLeadTime
+			}
+			createdDate
+			modifiedDate
+		}
+
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"getMyInfo": {
+			"id": "6595f665-c21d-48ae-912f-562a5080fbf2",
+			"isVerified": true,
+			"email": "jmlee@voiij.co.kr",
+			"name": "jmlee",
+			"profileImageUrl": "https://d3otocwgekczt7.cloudfront.net/upload/image/users/0931ecc7-4d8d-4a69-b541-6dbbe2f2343e/e59e76b5-3011-4599-b3de-3885b1e32c2d.png",
+			"Addresses": [
+				{
+				"isDefaultAddress": true,
+                "address1": "서울 강서구 강서로37길 77",
+                "address2": "지명아트빌라 201호",
+                "postalCode": "07710",
+                "countryCode": "KR",
+                }
+			],
+			"isSeller": false
+		}
+	}
+}
+```
+
+## 상품 추가 (GetProductView)
+
+> Query:
+
+```graphql
+mutation AddProduct(
+	$product: ProductInput!) {
+  addProduct(product: $product)
+}
+```
+
+> 결과값
+
+```json
+{
+	"data": {
+		"addProduct": "success"
+	}
+}
+```
+
+### User
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+id | String | Y | 사용자 ID
+isVerified | Boolean | Y | 사용자 인증 완료 여부
+email | String | Y | 이메일
+name | String | Y | 이름(닉네임)
+profileImageUrl | String | N | 프로필 사진 url
+Addresses | [Address] | Y | 사용자 배송 주소
+isSeller | String | Y | 판매자 여부
+
+### Address
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+isDefaultAddress | String | Y | 대표 주소 여부
+recipientName | Boolean | Y | 수령인 이름
+countryCode | String | Y | 국가 코드
+address1 | String | Y | 주소1
+address2 | String | Y | 주소2
+postalCode | String | N | 한국 (postalCode)
+city | String | N | 미국, 영국 (city)
+county | String | N | 영국 (county)
+postCode | String | N | 영국 (postCode)
+state | String | N | 미국 (state)
+zipCode | String | N | 미국 (zipCode)
 
 # 장바구니 (Cart)
 
