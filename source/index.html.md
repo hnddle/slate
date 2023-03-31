@@ -159,9 +159,9 @@ query getMyInfo{
 			"Addresses": [
 				{
 				"isDefaultAddress": true,
-                "address1": "서울 강서구 강서로37길 77",
-                "address2": "지명아트빌라 201호",
-                "postalCode": "07710",
+                "address1": "주소1",
+                "address2": "주소2",
+                "postalCode": "01234",
                 "countryCode": "KR",
                 }
 			],
