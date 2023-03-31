@@ -569,7 +569,7 @@ mutation ResetPassword($email: String!, $passwordResetCode: String!,
 }
 ```
 
-# 라이선스
+# 라이선스 (License)
 
 ## 라이선스 등록 (registerLicense)
 
