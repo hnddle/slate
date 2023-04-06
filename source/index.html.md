@@ -1555,42 +1555,15 @@ quantity | Int | Y | 수량
 
 작성중!
 
-## 장바구니 조회 (GetCartView)
+## 주문들 조회 (GetUserOrders)
 
-테스트 필요!
-
-> Query:
+> Mutation:
 
 ```graphql
-query GetCartView(
-	$language: String!, 
-	$currency: String!,
-	$shippingCountry: String!) {
-  getCartView(
-		currency: $currency,
-		language: $language,
-    shippingCountry: $shippingCountry) {
-		#장바구니 상품 목록
-    currency
-    shippingCountry
-    totalCartPrice
-    cartViewItems {
-      id
-      productThumbnailImageUrl
-      productName
-			quantity
-      stockQuantity
-      sellerName
-			sellerProfileImageUrl
-			listPrice
-			salePrice
-			isDiscountApplied
-			discountRate
-			totalProductPrice
-			isCurrencyAvailable
-			isShippingAvailable
-    }
-  }
+mutation GetUserOrders($pageNumber: Int!) {
+  getUserOrders(
+	pageNumber: Int!
+	): [OrderView]
 }
 ```
 
@@ -1599,57 +1572,76 @@ query GetCartView(
 ```graphql
 {
 	"data": {
-		"getCartView": {
-			"currency": "KRW",
-			"shippingCountry": "KR",
-			"totalCartPrice": 200000,
-			"cartViewItems": [
-				{
-					"id": "3255f15b-52f1-49d7-a139-9851bcde43e9",
-					"productThumbnailImageUrl": "be465a41-d3cd-456e-940a-119760f2f638",
-					"productName": "제품명",
-					"quantity": 2,
-					"stockQuantity": 10,
-					"sellerName": "jmlee",
-					"sellerProfileImageUrl": null,
-					"listPrice": 200000,
-					"salePrice": 100000,
-					"isDiscountApplied": true,
-					"discountRate": 50.0,
-					"totalProductPrice": 200000,
-					"isCurrencyAvailable": true,
-					"isShippingAvailable": true
-				}
-			]
+		"getUserOrders": {
+			
 		}
 	}
 }
 ```
 
-### CartView
+### OrderInput
 
 변수명 | 자료형 | 필수 여부 | 설명
 --------- | ------- | ----------- | ----------
-cartViewItems | [CartViewItem] | N | 장바구니 상품
-currency | String | N | 통화 코드
-shippingCountry | String | N | 배송 국가 코드
-totalCartPrice | Int | N | 장바구니 총 금액
+currency | String | Y | 통화 코드
+recipientName | String | Y | 수령인 이름
+shippingCountry | String | Y | 배송 국가 코드
+address1 | String | Y | 주소1
+address2 | String | Y | 주소2
+cityStateOrPostalCode | String | Y | 도시, 주, 우편번호
+orderItems | [OrderItemInput] | Y | 주문 상품 정보
+shippingRequest | String | N | 배송 요청
+customsIdNumber | String | N | 개인통관부호
 
-### CartViewItem
+
+### OrderItemInput
 
 변수명 | 자료형 | 필수 여부 | 설명
 --------- | ------- | ----------- | ----------
-id | String | N | 정가
-productThumbnailImageUrl | String | N | 판매가
-productName | String | N | 통화 코드
-quantity | Int | N | 상품 배송 정보
-stockQuantity | Int | N | 정가
-sellerName | String | N | 판매가
-sellerProfileImageUrl | String | N | 통화 코드
-listPrice | Int | N | 상품 배송 정보
-salePrice | Int | N | 정가
-isDiscountApplied | Boolean | N | 통화 코드
-discountRate | Float | N | 상품 배송 정보
-totalProductPrice | Int | N | 정가
-isCurrencyAvailable | Boolean | N | 판매가
-isShippingAvailable | Boolean | N | 통화 코드
+productId | String | Y | 상품 ID
+quantity | Int | Y | 수량
+
+## 주문 상세 조회 (GetOrder)
+
+> Mutation:
+
+```graphql
+mutation GetOrder($orderId: String!) {
+  getOrder(
+	orderId: String
+	): OrderView
+}
+```
+
+> 결과값
+
+```graphql
+{
+	"data": {
+		"getOrder": {}
+
+	}
+}
+```
+
+### OrderInput
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+currency | String | Y | 통화 코드
+recipientName | String | Y | 수령인 이름
+shippingCountry | String | Y | 배송 국가 코드
+address1 | String | Y | 주소1
+address2 | String | Y | 주소2
+cityStateOrPostalCode | String | Y | 도시, 주, 우편번호
+orderItems | [OrderItemInput] | Y | 주문 상품 정보
+shippingRequest | String | N | 배송 요청
+customsIdNumber | String | N | 개인통관부호
+
+
+### OrderItemInput
+
+변수명 | 자료형 | 필수 여부 | 설명
+--------- | ------- | ----------- | ----------
+productId | String | Y | 상품 ID
+quantity | Int | Y | 수량
