@@ -128,20 +128,22 @@ tokenType | String | Y | 토큰 헤더 (Bearer)
 > Query:
 
 ```graphql
-query getMyInfo{
-	id
-	isVerified
-	email
-	name
-	profileImageUrl
-	Addresses {
-		isDefaultAddress
-		recipientName
-		countryCode
-		address1
-		address2
-	}
-	isSeller
+query GetMyInfo {
+  getMyInfo {
+    id
+		isVerified
+		email
+		name
+		profileImageUrl
+		Addresses {
+			isDefaultAddress
+			recipientName
+			countryCode
+			address1
+			address2
+		}
+		isSeller
+  }
 }
 ```
 
@@ -318,7 +320,7 @@ mutation UpdatePassword($password: String!, $newPassword: String!) {
 }
 ```
 
-## 닉네임 변경 (CheckLoginTokenValid)
+## 닉네임 변경 (UpdateName)
 
 > Mutation:
 
@@ -723,8 +725,8 @@ mutation UploadLicenseRepresentativeImage($image: Upload!) {
 > Mutation:
 
 ```graphql
-mutation RegisterSeller($sellerName: String!) {
-  registerSeller(sellerName: $sellerName)
+mutation RegisterSeller($seller: SellerInput!) {
+  registerSeller(seller: $seller)
 }
 ```
 
@@ -776,41 +778,45 @@ mutation DeleteSeller {
 
 ```graphql
 query GetSimpleRecommendedProductsByCursor(
-	$currency: String!, 
-	$shippingCountry: String!) {
+    $currency: String!, 
+    $shippingCountry: String!,
+    $tag: String
+    $cursor: String) {
   getSimpleRecommendedProductsByCursor(
-		currency: $currency,
-		shippingCountry: $shippingCountry) {
-			id
-			name
-			listPrice
-			salePrice
-			isDiscountApplied
-			discountRate
-			currency
-			shippingCountries
-			stockQuantity
-			thumbnailImageUrl
-			representativeImageUrl
-			additionalImageUrls
-			descriptionHtml
-			isOnSale
-			isAdultProduct
-			isDeliveryBundled
-			licenseThumbnailImageUrl
-			licenseName
-			sellerBusinessType
-			sellerCountry
-			sellerName
-			sellerProfileImageUrl
-			tags
-			numberOfSales
-			numberOfLikes
-			averageReviewScore
-			numberOfReviews
-			createdDate
-			modifiedDate
-		}
+        currency: $currency,
+        shippingCountry: $shippingCountry,
+        tag: $tag,
+        cursor: $cursor) {
+            id
+            name
+            listPrice
+            salePrice
+            isDiscountApplied
+            discountRate
+            currency
+            shippingCountries
+            stockQuantity
+            thumbnailImageUrl
+            representativeImageUrl
+            additionalImageUrls
+            descriptionHtml
+            isOnSale
+            isAdultProduct
+            isDeliveryBundled
+            licenseThumbnailImageUrl
+            licenseName
+            sellerBusinessType
+            sellerCountry
+            sellerName
+            sellerProfileImageUrl
+            tags
+            numberOfSales
+            numberOfLikes
+            averageReviewScore
+            numberOfReviews
+            createdDate
+            modifiedDate
+        }
 }
 ```
 
