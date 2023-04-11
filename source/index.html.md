@@ -1292,12 +1292,10 @@ mutation UploadProductAdditionalImages($images: [Upload!]!) {
 
 ```graphql
 query GetCartView(
-	$language: String!, 
 	$currency: String!,
 	$shippingCountry: String!) {
   getCartView(
 		currency: $currency,
-		language: $language,
     shippingCountry: $shippingCountry) {
 		#장바구니 상품 목록
     currency
@@ -1305,6 +1303,7 @@ query GetCartView(
     totalCartPrice
     cartViewItems {
       id
+			productId
       productThumbnailImageUrl
       productName
 			quantity
