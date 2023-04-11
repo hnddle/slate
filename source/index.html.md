@@ -187,6 +187,7 @@ isSeller | String | Y | 판매자 여부
 
 변수명 | 자료형 | 필수 여부 | 설명
 --------- | ------- | ----------- | ----------
+id | String | Y | 주소 ID
 isDefaultAddress | String | Y | 대표 주소 여부
 recipientName | Boolean | Y | 수령인 이름
 countryCode | String | Y | 국가 코드
