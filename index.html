@@ -350,7 +350,7 @@
                     <a href="#updatepassword" class="toc-h2 toc-link" data-title="비밀번호 변경 (UpdatePassword)">비밀번호 변경 (UpdatePassword)</a>
                   </li>
                   <li>
-                    <a href="#checklogintokenvalid-2" class="toc-h2 toc-link" data-title="닉네임 변경 (CheckLoginTokenValid)">닉네임 변경 (CheckLoginTokenValid)</a>
+                    <a href="#updatename" class="toc-h2 toc-link" data-title="닉네임 변경 (UpdateName)">닉네임 변경 (UpdateName)</a>
                   </li>
                   <li>
                     <a href="#verifyemail" class="toc-h2 toc-link" data-title="이메일 인증 (VerifyEmail)">이메일 인증 (VerifyEmail)</a>
@@ -637,20 +637,22 @@
 <blockquote>
 <p>Query:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">getMyInfo</span><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">GetMyInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">getMyInfo</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="n">id</span><span class="w">
-    </span><span class="n">isVerified</span><span class="w">
-    </span><span class="n">email</span><span class="w">
-    </span><span class="n">name</span><span class="w">
-    </span><span class="n">profileImageUrl</span><span class="w">
-    </span><span class="n">Addresses</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="n">isDefaultAddress</span><span class="w">
-        </span><span class="n">recipientName</span><span class="w">
-        </span><span class="n">countryCode</span><span class="w">
-        </span><span class="n">address1</span><span class="w">
-        </span><span class="n">address2</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-    </span><span class="n">isSeller</span><span class="w">
+        </span><span class="n">isVerified</span><span class="w">
+        </span><span class="n">email</span><span class="w">
+        </span><span class="n">name</span><span class="w">
+        </span><span class="n">profileImageUrl</span><span class="w">
+        </span><span class="n">Addresses</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="n">isDefaultAddress</span><span class="w">
+            </span><span class="n">recipientName</span><span class="w">
+            </span><span class="n">countryCode</span><span class="w">
+            </span><span class="n">address1</span><span class="w">
+            </span><span class="n">address2</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+        </span><span class="n">isSeller</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -909,7 +911,7 @@
         </span><span class="nl">"updatePassword"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='checklogintokenvalid-2'>닉네임 변경 (CheckLoginTokenValid)</h2>
+</span></code></pre></div><h2 id='updatename'>닉네임 변경 (UpdateName)</h2>
 <blockquote>
 <p>Mutation:</p>
 </blockquote>
@@ -1499,8 +1501,8 @@
 <blockquote>
 <p>Mutation:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">RegisterSeller</span><span class="p">(</span><span class="nv">$sellerName</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="n">registerSeller</span><span class="p">(</span><span class="n">sellerName</span><span class="p">:</span><span class="w"> </span><span class="nv">$sellerName</span><span class="p">)</span><span class="w">
+<div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">mutation</span><span class="w"> </span><span class="n">RegisterSeller</span><span class="p">(</span><span class="nv">$seller</span><span class="p">:</span><span class="w"> </span><span class="n">SellerInput</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="n">registerSeller</span><span class="p">(</span><span class="n">seller</span><span class="p">:</span><span class="w"> </span><span class="nv">$seller</span><span class="p">)</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <blockquote>
@@ -1557,10 +1559,14 @@
 </blockquote>
 <div class="highlight"><pre class="highlight graphql tab-graphql"><code><span class="k">query</span><span class="w"> </span><span class="n">GetSimpleRecommendedProductsByCursor</span><span class="p">(</span><span class="w">
     </span><span class="nv">$currency</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w"> 
-    </span><span class="nv">$shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!)</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nv">$shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">!,</span><span class="w">
+    </span><span class="nv">$tag</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="w">
+    </span><span class="nv">$cursor</span><span class="p">:</span><span class="w"> </span><span class="nb">String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
   </span><span class="n">getSimpleRecommendedProductsByCursor</span><span class="p">(</span><span class="w">
         </span><span class="n">currency</span><span class="p">:</span><span class="w"> </span><span class="nv">$currency</span><span class="p">,</span><span class="w">
-        </span><span class="n">shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nv">$shippingCountry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="n">shippingCountry</span><span class="p">:</span><span class="w"> </span><span class="nv">$shippingCountry</span><span class="p">,</span><span class="w">
+        </span><span class="n">tag</span><span class="p">:</span><span class="w"> </span><span class="nv">$tag</span><span class="p">,</span><span class="w">
+        </span><span class="n">cursor</span><span class="p">:</span><span class="w"> </span><span class="nv">$cursor</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="n">id</span><span class="w">
             </span><span class="n">name</span><span class="w">
             </span><span class="n">listPrice</span><span class="w">
