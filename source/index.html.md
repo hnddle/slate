@@ -1297,7 +1297,6 @@ query GetCartView(
   getCartView(
 		currency: $currency,
     shippingCountry: $shippingCountry) {
-		#장바구니 상품 목록
     currency
     shippingCountry
     totalCartPrice
